@@ -1,0 +1,248 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh7540\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 ORM Basics\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0\fs24 \cf0 ** Object Relational Mapping (ORM) is the technique of accessing a relational database using OOP. Database tables are \'93mapped\'94 to classes, and instances of that class are mapped to rows of the table. \
+\
+\ul Creating Database in Ruby\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` db_connection = SQLite3::Database.new(\'91db/database_name.db\'92) `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 OR\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` db = \{:conn => SQLite3::Database.new(\'93db/database_name.db) `\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 Execute SQL code: 
+\b ` db_connection.execute(\'93SQL statement\'94) `\
+\
+
+\b0 \ul Creating a Class Table\
+\
+\ulnone ** It is common to have a method within a class that is responsible for creating a table to store information from class instances. This table should have columns that correspond to each attr_accessor property\
+\
+ex: `
+\b \
+def self.create_table\
+  sql = <<-SQL\
+    CREATE TABLE IF NOT EXISTS cats(\
+	id INTEGER PRIMARY KEY,\
+	name TEXT,\
+	breed TEXT,\
+	age TEXT)\
+	SQL  
+\b0 \
+\ul   
+\b \ulnone db[:conn].execute(sql)\
+end
+\b0 \ul \
+\ulnone ** This method uses a \'93heredoc\'94 to create a multiline SQL string. String is opened with 
+\b <<-SQL 
+\b0 and closed with 
+\b SQL
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Here_document"}}{\fldrslt \cf0 https://en.wikipedia.org/wiki/Here_document}}\ul \
+\
+Save Method\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** A \'93.save\'94 method may be created within the class being mapped to a database in order to automatically save properties to their corresponding columns without writing a new \'93.execute\'94 statement each time\
+\
+ex:
+\b \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i\b0 \cf0 Writing \'93.save\'94 method (note that question marks correspond to variables stated after
+\i0\b \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b0 \cf0 {{\NeXTGraphic Screen Shot 2017-02-25 at 5.30.00 PM.png \width9050 \height6000
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \
+\
+Bound parameters: The question marks are replaced by each value inserted into the execute method following the sql string. If the SQL code were saved in a variable called 
+\b sql
+\b0 , the execute method could be called like this:\
+
+\b ` database_connection.execute(sql, name, beed, age) `\
+\
+
+\b0 The \'93.save\'94 method should also include code that adds the auto assigned database ID number back into the original object used to create that row. This can be done by including an 
+\b attr_accessor 
+\b0 for 
+\b :id
+\b0  and by adding the following code to the end of the \'93.save\'94 method:\
+
+\b ` @id = db[:conn].execute(\'93SELECT last_insert_rowid() FROM cats\'94).flatten[0]\
+\
+
+\b0 Make sure that objects cannot be saved into database more than once using \'93id\'94:\
+
+\b def save\
+  if self.id\
+    self.update\
+  else\
+    
+\i (previous code)\
+  end\
+end\
+
+\i0\b0 ** This code will check if an object has already been assigned an \'93id\'94 property (which means it was entered into the database already) before saving. If it has an \'93id\'94 property, it will update the corresponding row within the database with the objects current properties, whether or not anything has changed\
+
+\i SIDENOTE: I don\'92t think this code will work if you are trying to reinsert a row into the database that was created and then deleted
+\b \
+
+\i0\b0 \
+\
+
+\i Using \'93.save\'94 method to save all cat instances to database\
+
+\i0 {{\NeXTGraphic Screen Shot 2017-02-25 at 5.19.41 PM.png \width6920 \height1470
+}¬}\
+\
+\
+\ul Create Method\
+\
+\ulnone ** A create method may often be built in order to create a \'93new\'94 object and \'93save\'94 it into the database using one method.\
+ex: 
+\b `\
+def self.create(name:, breed:, age:)\
+  cat = Cat.new(name, breed, age)\
+  cat.save\
+  cat 
+\i\b0 (returns created instance)
+\i0\b \
+end `\
+
+\b0 ** The colons at the end of each argument in the create method allow for the user to call that method using the arguments in any order\
+ex:
+\b  `\
+Cat.create(breed: \'93Tabby\'94, age: 4, name: \'93Simba\'94) `
+\b0 \
+\
+\ul Sanitizing SQL Code\
+\
+\ulnone ** It is necessary to \'93sanitize\'94 all user entered data when adding that data into a database. When a user enters information to be saved into a database, they could potentially enter malicious code into the SQL statement, permanently altering the entire table.\
+\
+ex:\
+(a user is asked to enter a name)\
+
+\b ` Robert); DROP TABLE students `\
+
+\b0 ** This code will enter the name Robert into the INSERT INTO statement, but then will end the statement and proceed to run the DROP TABLE statement, deleting the entire table\
+\
+Prepared statements: We can prepare statements using the \'93db.prepare\'94 method which automatically sanitizes any inputted code. The return value of this method may be used in a SQL statement instead of the original string.\
+\
+\ul Database Row to Object\ulnone \
+\
+Database rows can be converted back into Ruby objects using two methods:\
+\
+
+\b class Cat\
+  \'85\'85\'85\'85\'85\
+\
+  def self.all\
+    sql = <<-SQL\
+      SELECT *\
+      FROM cats\
+      SQL\
+    db[:conn].execute(sql).map do | row |\
+      self.new_from_db(row)\
+    end\
+  end\
+  
+\i\b0 (Iterates through every row and creates a Cat object for each using \'93new_from_db\'94 object)
+\i0\b \
+\
+  def new_from_db(row)\
+    instance = Cat.new(row[1], row[2], row[3])\
+    instance.id = row[0]\
+  end\
+  
+\i\b0 (creates new Cat instance for a given row in the form of an array)
+\i0\b \
+\
+end
+\b0 \
+\
+\
+\ul Search Database\
+\
+
+\b \ulnone def self.find_by_name(name)\
+  sql = <<-SQL\
+    SELECT *\
+    FROM cats\
+    WHERE name = ?\
+    LIMIT 1\
+    SQL\
+  row = db[:conn].execute(sql, name)[0]\
+  self.new_from_db(row)\
+end\
+
+\i\b0 (finds first row where the name column equals the argued \'93name\'94 variable and creates a new object using row data)\
+\
+\
+
+\i0 \ul Find or Create Method\
+\
+\ulnone ** If a record cannot be found in the database, a new object is created and entered into the database. Otherwise the current row is returned as an object:\
+\
+
+\b def self.find_or_create_by(name:, breed:, age:)\
+  sql = \'93SELECT * FROM cats WHERE name = ? AND breed = ? AND age = ? LIMIT 1\'94\
+  cat_array = DB[:conn].execute(sql, name, breed, age).flatten\
+  if !cat_array.empty?\
+    cat = Cat.new(cat_array[1], cat_array[2], cat_array[3])\
+    cat.id = cat_array[0]\
+  else\
+    cat = self.create(name: name, breed: breed, age: age)\
+  end\
+  cat\
+end
+\i\b0 \
+\
+\
+
+\i0 \ul Update Database\
+\
+\ulnone 1. Search database and save row (to be altered) as an object using 
+\b find_by_name 
+\b0 method\
+\
+2. Update object properties using basic 
+\b attr_accessor 
+\b0 or
+\b  attr_writer
+\b0  methods\
+\
+3. Save (update) object back into database using following method:\
+\ul \
+
+\b \ulnone def update\
+  sql = \'93UPDATE songs SET name = ?, breed = ?, age = ? WHERE id = ?\
+  db[:conn].execute(sql, self.name, self.breed, self.age, self.id)\
+end\
+\
+    \
+
+\b0 \
+\
+\
+\
+\
+\
+}

@@ -1,0 +1,207 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red102\green177\blue50;\red110\green5\blue0;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs24 \cf0 \ul \ulc0 Git Basics\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ulnone Git: A version control system (VCS), or a system for managing multiple revisions of the same program or unit of informations. This allows developers and designers to work on the same code base without constantly stepping on each others toes. Git is a distributed version control system which means it does not need a network connection, and updates can be added through a local drive.\
+\
+Repository: A collection of all the versions of a particular project, along with some special information including\'85\
+- Order/time of changes\
+- Description of each change\
+- Person responsible for change\
+\
+Committing: The act of telling the VCS that a version is complete. Versions may also be referred to as \'93commits.\'94 \
+\
+** Files that you do not want tracked by git may be listed in \'93.gitignore\'94 file\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Setting Remote with SSH\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone Type following command in terminal (within project folder directory) in order to retrieve public SSH key: 
+\b ` cat ~/.ssh/github_rsa.pub ` 
+\b0 (possible \'93id_rsa\'94 instead of \'93github_rsa\'94)\
+Copy Key\
+Paste into SSH keys under github settings (include \'93ssh-rsa\'94 at beginning of key)\
+Create new github repository\
+Follow steps by copying and pasting commands in terminal while in local project directory in order to connect repositories (\'93git remote\'94 + \'93git push\'94)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Git Commands:\ulnone \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul add
+\b0 \ulnone : Adds file to git folder that are not currently included. Can also add files to staging area that are already in git folder. 
+\b Adding files only stages them, but DOES NOT commit them
+\b0 \
+ex: \'93git add README\'94\
+** To add all created files to staging area use 
+\b \'93 add . \'94 
+\b0 command
+\b  
+\b0 \
+\
+\
+
+\b \ul branch
+\b0 \ulnone : Creates new branch within project. Files edited in new branches will not affect original files in master branch\
+** Changes made in new branch will be reflected in master branch 
+\b until 
+\b0 changes made in the new branch are 
+\b committed
+\b0 . After commit, merge will return to its original state until the new branch is 
+\b merged 
+\b0 \
+\
+ex: git branch new_branch\
+\
+- Branch begins as copy of previous branch, so all previous commits will be included in log already\
+- Running command \'93git branch\'94 will print a list of all branches included in project, with current branch marked by an asterisk \'93 * \'94\
+\
+-D: used to delete branch (can only be used if you are on a  different branch)\
+ex: git branch -D new_branch\
+\
+-d: Also used to delete branch but will only pass if branch has already been merged to master\
+\
+-a: Used to see list of all current branches, including remotes\
+\
+\
+
+\b \ul checkout
+\b0 \ulnone : Returns to previous or alternative version of project, 
+\b specified by commit ID,
+\b0  
+\b or branch name
+\b0 . (Does not need entire commit id. Usually ~6 characters is sufficient. \'93
+\b git checkout b440063
+\b0 \'94 will revert user to the projects state at the time of commit ID \'93\CocoaLigature0 b440063fff759923510944f952321cb381c8bbcd\'94\CocoaLigature1 ). User can then open up files and view directory at the time of this commit, as opposed to viewing the project in its most recent form. It is recommended that the user does not alter any files while in checkout mode. To exit checkout mode, type command \'93
+\b git checkout master
+\b0 \'94\
+\
+** To checkout the latest commit made to a certain branch, you can use a special identifier: \'93
+\b git checkout HEAD
+\b0 \'94. To checkout versions before the latest, you can follow this \'93HEAD\'94 command with a \'93~\'94 and number. For example: to check out a version 2 commits previous to the latest commit, the user can use the command \'93
+\b git checkout HEAD~2
+\b0 \'94\
+\
+-b: Allows user to create new branch while during checkout so they can create a branch and move to it all in one step\
+ex: \'93git checkout -b new_branch\'94\
+\
+-f: This may be used to throw away all local changes. Can be used to salvage accidentally removed files before changes are committed\
+ex: \'93git checkout -f\'94\
+\
+
+\b \ul \
+clone
+\b0 \ulnone : Creates an identical copy of an existing repository from your computer or a remote location\
+ex: \'93git clone ~/first_repository ~/Documents/repository_clone\'94\
+\
+\
+
+\b \ul commit
+\b0 \ulnone : Commits previous change to git folder and opens up default editor for user to describe commit\
+-a: Commits all changes made to any files currently in git folder whether or not the files are in the staging area\
+-m: Allows user to manually enter commit description without opening text editor\
+\
+\
+
+\b \ul config
+\b0 \ulnone : Configures various defaults in git program including\'85\
+- Username - \'93user.name\'94\
+- User e-mail - \'93user.email\'94\
+- Default text editor - \'93core.editor\'94\
+ex: \'93git config --global core.editor \'91nano\'92 \'94\
+ex: \'93git config --global user.email \'91danpaulgo@aol.com\'92 \'94 \
+\
+\
+
+\b \ul diff
+\b0 \ulnone : Shows user the differences between two commits, identified by commit ID. Each altered file is shown, \cf2 added info highlighted in green and marked by a \'93+\'94\cf0 , \cf3 deleted info highlighted in red and marked by a \'93-\'93\cf0 , and mutual information printed normally\
+** Latest commit ID should be typed second\
+ex: \'93git diff d80ace 8c8e2d\'94\
+\
+\
+
+\b \ul flow
+\b0 \ulnone : \
+** Must be installed separately from git\
+- Set up git flow environment by creating \'93integration\'94 branch and running \'93
+\b git flow init
+\b0 \'94\
+- Begin using gitflow by running \'93
+\b git flow feature start feature_name
+\b0 \'94\
+- When finished editing feature, run \'93
+\b git flow feature finish feature_name
+\b0 \'94 and gitflow will automatically merge feature into integration branch (which is a final version of the full project before merging to the actual master branch)\
+- In order to merge changes directly to master branch, as opposed to integration branch, use commands \'93
+\b git flow hotfix start hotfix_name
+\b0 \'94 and \'93
+\b git flow hotfix finish hotfix_name
+\b0 \'94 (will redirect user to add a tag in text editor when finishing hotfix)\
+\
+\
+
+\b \ul init
+\b0 \ulnone : Created new git folder\
+ex: \'93git init \'91my_project\'92 \'94 OR \'93git init\'94\
+\
+\
+
+\b \ul log
+\b0 \ulnone : Shows log of all commits including author, date, message, and commit ID. Commits listed in order from new to old\
+\
+\
+
+\b \ul merge
+\b0 \ulnone : Merges two branches together after splitting\
+\
+-m: Enter merge message manually as opposed to git opening text editor\
+\
+** In most cases, git will be able to automatically merge files. However, if the same file was edited in both branches, there will be a merge error. In order to fix error, open up the conflicting file in the master branch, and edit as necessary (conflicting versions will be separated by \'93=======\'93). Add and commit file to resolve error.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 ** It is common to delete branches once they have been merged back to master but not necessary\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul pull
+\b0 \ulnone : Pulls changes from remote folder to current folder, using origin as default. Must provide name of specific branch to pull from. Works similarly to \'93\ul merge\ulnone \'94 in terms of error handling.\
+ex: \'93git pull project_clone new_feature\
+\
+\
+
+\b \ul push
+\b0 \ulnone : Pushes all new changes to remote folder, with \'93origin\'94 folder as default.\
+- Must provide branch name, followed by remote folder name if branch does not already exist in remote folder\
+- Must provide folder name if pushing to any folder other than \'93origin\'94\
+ex: \'93git push -u origin new_feature\'94 (the \'93-u\'94 is only necessary the first time data is pushed to new repo)\
+\
+\
+
+\b \ul remote
+\b0 \ulnone : Prints all remote git folders available to current repository. \
+\
+** Remotes can be added by using 
+\b remote add
+\b0  command, followed by path\
+ex: git remote add project_clone ~/Documents/repository_clone\
+\
+** \'93git remote -v\'94 will print the full URL of the original repo\
+\
+\
+
+\b \ul status
+\b0 \ulnone : Shows which files have been created and which have been staged. Unstaged files appear in red while staged files appear in green. Staged files can be committed at any time. \
+\
+\
+\
+\
+}

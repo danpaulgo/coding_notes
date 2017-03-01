@@ -1,0 +1,165 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww11760\viewh6280\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 Rails Routes and Resources\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\fs24 \cf0 Creating pages\
+\
+
+\b0 1. Create \'93get\'94 request within \'93Rails.application.routes.draw\'94 in \'93config > routes.rb\'94\
+ex: 
+\b ` get "/pages", to: "pages#index" `\
+
+\b0 ** Sends \'93/pages\'94 path to the \'93index\'94 action of the \'93pages\'94 controller\
+\
+
+\b ` root \'93pages#index\'94 `\
+
+\b0 ** This will link the homepage, without any subfolders (localhost:3000), to  the index method of the pages controller\
+\
+** Routes are used to direct a particular request to the specific controller that can handle them\
+** Controllers usually have multiple \'93action methods\'94 such as \'93index\'94, \'93show\'94, and \'93update\'94 which must be specified when controller is called\
+{\field{\*\fldinst{HYPERLINK "http://guides.rubyonrails.org/routing.html#connecting-urls-to-code"}}{\fldrslt http://guides.rubyonrails.org/routing.html#connecting-urls-to-code}}\
+\
+2. Create controller_name.rb file in \'93app > controllers\'94\
+MUST HAVE SPECIFIC FORMAT: 
+\b name_controller.rb
+\b0 \
+\
+3. Extend class from \'93ApplicationController\'94 (built in overarching controller class): 
+\b \
+
+\b0 ex: \
+
+\b ` class ControllerName < 
+\i ApplicationController
+\i0  \
+end`\
+\
+
+\b0 OR
+\b \
+\
+
+\b0 2/3. Generate controller in terminal\
+ex: 
+\b ` bin/rails generate controller Name `\
+
+\b0 ** Does steps 2 and 3 automatically 
+\b \
+
+\b0 ** Controllers may be later deleted by using \'93destroy\'94 command in place of \'93generate\'94\
+\
+4. Add \'93name\'94 method inside class\
+ex:\
+
+\b ` class ControllerName < 
+\i ApplicationController 
+\i0 \
+	def name\
+	end
+\b0 \
+
+\b end `\
+\
+
+\b0 5. Create a folder in \'93app > views\'94 with the same name as the controller\
+\
+6. Create a \'93.erb\'94 file within the new folder with the name of a subdirectory such as \'93home\'94\
+ex: 
+\b  ` views > name > home.html.erb ` 
+\b0 (must have \'93.html.erb\'94)\
+** See embedded ruby for more on \'93.erb\'94 syntax\
+\
+\
+\ul Setting Up Model\
+\
+\ulnone ** Models are created using same form as scaffolding\
+\
+1. Run \'93generate model\'94 command in terminal\
+ex: 
+\b ` bin/rails generate model Page title:string body:text slug:string `\
+
+\b0 ** Will create ruby file creating table within \'93db > migrate\'94 as well as empty model file within \'93app > models > pages\'94\
+** Model name \'93Page\'94 (singular uppercase), converts to table name \'93pages\'94 (plural lowercase)\
+\
+OR\
+\
+1. Run ` 
+\b bin/rails generate migration create_pages `
+\b0  (make sure to use snake_case)\
+** This will create an empty table. The method creating this table can be found in \'93db > migrate\'94\
+\
+2. Go into \'93\'85_create_pages.rb\'94 file and add columns to the table creator \
+ex:\
+
+\b ` class CreateArticles < ActiveRecord::Migration[5.0]\
+  def change\
+    create_table :articles do |t|\
+      t.string :title\
+      t.text :description\
+      t.timestamps\
+    end\
+  end\
+end `\
+
+\b0 ** Will add a title column that takes strings, a description column that takes text, and a timestamp column which is set automatically\
+\
+3. Run migration to create table within database\
+ex: 
+\b ` bin/rails db:migrate `\
+
+\b0 ** To reverse migration (in order to edit table and remigrate), use 
+\b ` bin/rails db:rollback `
+\b0 \
+\
+4. Open console and add date to database using CRUD commands\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 Embedded Ruby\
+\
+\ulnone ERB Tags:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` <% (ruby code) %>  `
+\b0 \
+** Runs ruby code without embedding results onto page. Used for defining variables, setting loops, creating methods, setting up conditionals, etc.\ul \
+\
+
+\b \ulnone ` <%= (ruby code) %>\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Runs ruby code and embeds results onto page\
+\
+Adding links/images:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` <%= link to \'93About\'94, welcome_about_path %> ` 
+\b0 (second argument MUST end in \'93_path\'94)\
+** This will create an \'93About\'94 link to the \'93about\'94 page of the \'93welcome\'94 controller. \'93 <%= \'94 (not \'93<%\'94) is used so that link actually appears embedded on page\
+\
+
+\b <%= link to image_tag(\'93image_name.jpg\'94), \'93http://www.image-url.com\'94 %>\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will create a link out of an image that links to any url you choose\
+** Images should be stored in app/assets/images \
+** MUST include http/https in last argument in order to link to external web pages\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 <&= image_tag \'93image_name.jpg\'94 %>\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Embeds image on page without creating link\
+\
+}

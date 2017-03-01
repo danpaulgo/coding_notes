@@ -1,0 +1,477 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww11200\viewh15720\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs24 \cf0 \ul \ulc0 Console Foundations
+\fs28 \ulnone \
+
+\b0\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+-bash (bourne-again shell): Default program (shell) that user is interacting with. Other shells include \'93ZSH\'94, \'93CSH\'94, \'93SSH\'94, and pretty much anything ending in \'93SH.\'94\
+\
+3 Main parts of command:\
+1. Command name (verb)  |  ex: \'93ls\'94\
+2. Option (modified verb) |  ex: \'93-l\'94\
+3. Argument  |  ex: \'93/etc\'94\
+\
+** In order to have the consoe read a text file, instead of manually typing command input, use \'93<\'93 after command, followed by file name\
+ex: \'93grep Frank < ~/Documents/August_Notes.rtf\'94 \
+\
+** In order to save command output to a new file, instead of printing to console, use \'93>\'94 after command followed by NEW file name\
+ex: \'93grep -i FRANK ~/Documents/random_notes.rtf > ~/Downloads/grep_output.txt\'94 (this will create new file called \'93grep_output.txt\'94 with result of grep command)\
+** Using \'93>>\'94 instead of \'93>\'94 will add text to the end of existing file instead of overwriting file\
+\
+** Use \'932>\'94 to redirect standard error stream to file \
+ex: \'93\CocoaLigature0 find / -name random_notes.rtf 2> ./Documents/find_errors.txt\'94\
+- \'932> /dev/null\'94 will simply delete standard error stream instead of saving to actual file\CocoaLigature1 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Environment Variables
+\b0 :\
+\
+\ul env\ulnone (environment: Used to print list of environment variables\
+\
+\ul echo\ulnone : Echo may be used as a command in the console to print a specific variable\
+\
+** Environment variables can be used in any command to avoid writing out entire command \
+ex: \'93cd $HOME\'94 will change directory to home directory\
+\
+Set new variable: VARIABLE=\'93value\'94 (no spaces)\
+\
+$PATH: This is the variable that directs the computer on where to search for called programs\
+ex: $PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin \
+** When a program is called, the computer will search through these 5 locations (separated by \'93:\'94) in the order presented until the program is located\
+\
+\
+** Nearly all commands come with a manual that outline all available options and usage patterns\
+\
+
+\b Installing Software:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 1. Download source file\
+2. Untar file\
+3. Run ./configure script\
+4. Run \ul make\ulnone  command\
+5. Run \ul sudo make install\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone COMMAND LIBRARY
+\b0 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul &\ulnone : Following a proccess opening command with an ampersand will begin the process, and assign a job number, without actually opening the program\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ex: top & (this will present \'93top\'94 with a job number and allow it to be reopened, without actually opening it initially)\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul |\ulnone  (pipe tool - NOT lowercase \'93L\'94): Allows user to combine programs together\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Takes output of command on left and makes it input of command on right\
+\
+ex: \'93 ps aux | grep \'91top\'92 \'94 (this will display all lines from the \'93ps aux\'94 processes list that contain the pattern \'93top\'94)\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul !!\ulnone : Represents most recently run command\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Prints actual command on first line\
+ex: \'93pwd\'94 followed by \'93!!\'94 will print \'93pwd\'94 on first line, followed by result on next line
+\b \
+\
+
+\b0 ** May be added onto\
+ex: \'93ls\'94 command folled by \'93!! -l\'94 will print list in long form\
+ex: \'93chown danielpaul labels.pdf\'94 (won\'92t run) followed by \'93sudo !!\'94 will run perfectly \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul adduser\ulnone : Adds new user to home directory (sudo command)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 *LINUX ONLY. WILL NOT RUN ON OS X*\
+(On OS X, use dscl) \
+\
+ex: sudo adduser mike\
+\
+** Tutorial to add new user on Mac OS X: {\field{\*\fldinst{HYPERLINK "http://www.techradar.com/how-to/computing/apple/terminal-101-creating-new-users-1305687"}}{\fldrslt http://www.techradar.com/how-to/computing/apple/terminal-101-creating-new-users-1305687}}
+\b \
+
+\b0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul apt-get\ulnone  (Advanced Packaging Tool Get): Used to install, uninstall, or upgrade packages (sudo command)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 apt-get options:\
+\
+- install\
+- uninstall\
+- update\
+** followed by name of package/program\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul brew\ulnone  (homebrew): A Mac OS X specific package manager, used to install, uninstall, and update programs\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 brew commands:\
+\
+- search: Search for installed or uninstalled programs by name\
+- remove: Uninstalls program installed using homebrew\
+- update: Updates to newest version of homebrew\
+- upgrade: Upgrades all programs installed by homebrew (always run update command before running upgrade command. Most recent version of homebrew is necessary in order to full upgrade packages)\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul cat\ulnone  (conCATenate files): Prints the contents of one or more files to the console
+\b0 \
+\
+\
+
+\b \ul cd\ulnone  (change directory): \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 - Change to directory within directory by typing directory name\
+- Change to home directory by typing \'93/\'93\
+- Change to any directory by typing path from home directory, beginning with \'93/\'93\
+- Change to default user directory by typing \'93~\'94. May also follow \'93~\'94 with path to another file\
+- Move up a directory by typing \'93..\'94 (may be followed by path leading to different directory in same directory as current directory)\
+- Type \'93../..\'94 to move up 2 directories 
+\b \
+\
+
+\b0 ** User may use tab completion to have cpu complete words automatically\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul chmod\ulnone  (change mode): Changes permission on specific file\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** See \'93ls\'94 for intro on permissions
+\b \
+\
+
+\b0 - Must follow command by specifying user(u), group(g), or other (o) (may be combined)\
+- Then, add \'93+\'94 or \'93-\'93 to specify whether permissions should be added or removed\
+- Next, specify permission using read(r), write(w), or execute(x)\
+- Finally, specify file name \
+** To add a permission change to \'93everybody,\'94 leave out first character (u g o)\
+\
+ex: chmod ug+r labels.pdf (this will \'93add\'94 permission for \'93user\'94 and \'93group\'94 to \'93read\'94 the file \'93labels.pdf\'94)\
+\
+chmod +x labels2.pdf (this will \'93add\'94 permission for \'93user\'94, \'93group\'94 and \'93other\'94 to \'93execute\'94 the file \'93labels2.pdf\'94)\
+\
+** Permissions can be represented using octal values (0 through 7 number system) where r = 4, w = 2, and x = 1. If all permissions are granted, the value is 7 (4+2+1). If only read and execute permissions are granted, the value is 5 (4+1). If only read and write permissions are granted, the value is 6 (4+2)\
+\
+ex: chmod 756 labels.pdf (this will create the following permissions for the \'93labels.pdf\'94 file: rwxr-xrw-)\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul chown\ulnone  (change owner): Changes owner of file or directory (sudo command)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Type name of user to change ownership to followed by file name\
+(to change user and group, separate by \'93:\'94    ex: \'93danielpaul:staff\'94\
+\
+ex: sudo chown danielpaul labels2.pdf (will change ownership of \'93labels2.pdf\'94 from current owner [\'93danpaulgo\'94] to \'93danielpaul\'94)\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul clear\ulnone : Puts command prompt at top of screen, but you can scroll up to see previous text\
+\
+\
+\ul cp\ulnone  (copy): Copies file to another directory \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 1st argument: Name of file to be copied (if includes spaces, put backslash \'93\\\'94 before space to escape it)\
+2nd argument: Path to new directory and/or name of copy (can copy file from another directory into current directory by using single dot \'93.\'94)\
+\
+cp options:\
+\
+-r (recursive): Used to copy entire directory as opposed to single file\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul curl\ulnone : A program used to make requests from the internet\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 curl options:\
+\
+-o: \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul dscl\ulnone  (direcory service command line utility): \
+\
+\
+\ul fg\ulnone  (foreground): Bring the most recently stopped program to the foreground \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 - Used to resume programs paused using \'93ctrl+z\'94 command\
+- Follow \'93fg\'94 command with job number to bring back particular job  |  ex: \'93fg 2\'94\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul find\ulnone : Locates files by name via directory\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** May search multiple directories at once \
+ex: \'93find Documents Applications/XAMPP -name \'91file.txt\'92\'94 (this will search for a file called \'93file.txt\'94 in both \'93Documents\'94 and \'93Applications/XAMPP\'94)
+\b \
+\
+
+\b0 find options:\
+\
+-name: searches by file name
+\b \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul grep\ulnone  (global regular expression print): Allows user to take certain input, search for a certain pattern (or term), and filter the input to only display lines that contain that pattern\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ex: grep \'93bash\'94 (this will filter input to only show lines containing the term \'93bash\'94)\
+\
+grep options:\
+\
+-n: Will include line number of file where pattern or term is found\
+-i: Will perform search without case sensitivity\
+-v: Will invert search to show lines where pattern is NOT found\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul jobs\ulnone : Prints list of jobs in current sessions
+\b0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul less\ulnone : A program that displays the content of a file within current directory\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 -type \'93q\'94 to exit out of less\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul ls\ulnone  (list): List directories
+\b0 \
+\
+ls options:\
+\
+-l (list long form): Provides list of directories with additional information. Provides total number of files including \'93hidden files\'94 (files beginning with dot \'93.\'94) but does not list hidden files.\
+\
+-a (list all): Lists all directories, including hidden directories. Can be combined with \'93-l\'94 to show additional information for all directories (may be written as \'93ls -l -a\'94 or \'93ls -la\'94)\
+\
+\
+** drwxrwxrwx (seen in \'93ls -l\'94 command. represents permissions)\
+\
+d - directory (if \'93-\'93 then it is a file, not directory)\
+\
+r(1) - user read\
+w(1) - user write\
+x(1) - user execute\
+\
+rwx(2) - group read/write/execute\
+\
+rwx(3) - public(other) read/write/execute\
+\
+(a \'93-\'93 represents lack of permission)\
+\
+\
+
+\b \ul man \ulnone (manual): Type before command to show manual for that command, including all options
+\b0 \
+\
+\
+
+\b \ul mkdir\ulnone  (make directory): Creates new directory\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 mkdir options:\
+\
+-p: create new directories within new directories all at once\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul mv\ulnone  (move): Moves or renames a file or directory\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 1st argument: Name of file to be moved or renamed (if includes spaces, put backslash \'93\\\'94 before space to escape it)\
+2nd argument: Path to new directory and/or new name of file (can move file from another directory into current directory by using single dot \'93.\'94)\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul nano\ulnone : A simple text editor\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 - \'93^\'94 = control key\
+- Must use \'93-z\'94 option in order to enable pausing via ctrl+z\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul ps\ulnone : Displays current proccess \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ps options:\
+\
+\'93aux\'94 (all users): Displays full list of all processes \
+- Used to figure out what processes are running, and the process ID for a specific task\
+\
+\'93-U\'94 (single user): Displays full list of processes from individual user\
+ex: \'93ps -U danpaulgo\'94\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul pwd\ulnone  (print working directory): Displays path of current directory\
+\
+\
+\ul rm\ulnone  (remove): Deletes file or directory PERMANENTLY (no recycle bin bulshit)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 rm options:\
+\
+-r (recursive): Used to delete entire directory as opposed to single file\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 signal (set of commands): A message sent to a process by the operating system\
+\
+
+\b0 \ul ctrl+z\ulnone : Stop or pause current process
+\b \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 - Each process is assigned a job number\
+- Process can be resumed using \'93fg\'94 (foreground) command
+\b \ul \
+
+\b0 \ulnone - \'93+\'94 symbolzies which program will reopen by default using \'93fg\'94\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul ctrl+c\ulnone  (terminate): Terminates open process\
+\
+\ul ctrl+d\ulnone : Signals end of file. Returns to command prompt\
+\
+\ul kill\ulnone  (terminate): Terminates process when process is not open. Must follow by process ID\
+\
+kill options:\
+\
+-KILL (may also be \'93-9\'94 or \'93-SIGKILL\'94): Overrides process and kills process as opposed to requesting process to quit. SHOULD ONLY BE USED AS LAST RESORT\
+\
+- STOP: Stops program as opposed to actually killing it, same as \'93ctrl+z\'94\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul sort\ulnone : Sorts lines of standard input and sends to standard output
+\b0 \
+\
+\
+
+\b \ul ssh\ulnone  (secure socket shell): A network protocol that provides administrators with a secure way to access a remote computer\
+\
+\
+\ul su\ulnone  (switch user): Allows you to log in as different user\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ex:\
+su danielpaul\
+Password: (enter password)\
+** Must change directory once signed in, preferably using \'93cd ~\'94 in order to access files within user folder\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul sudo\ulnone  (super user do): Allows user to run command as super user, with root privileges \
+\
+\
+\ul top\ulnone : A task manager that shows current processes\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 - Press \'93q\'94 to stop from running\
+- Press \'93c\'94 to set mode\
+- Can be paused using \'93ctrz+z\'94 command\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul which\ulnone : Prints the locations of a particular program\
+\
+\
+\ul whoami\ulnone : Displays name of user currently logged in (i.e. danpaulgo)\
+\
+\
+\
+Commands to study further:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 - \ul curl\
+\ulnone - \ul make\
+\ulnone - \ul which\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \
+\
+ }

@@ -1,0 +1,67 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 Metaprogramming in Ruby\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\i\b0\fs24 \cf0 \'93This is metaprogramming because we are writing code that writes for us\'94
+\i0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+Metaprogramming is a programming technique in which computer programs have the ability to that programs as their data. It means that a program can be designed to read, generate, analyze, or transform other programs, and even modify itself while running. \
+\
+\ul Keyword Arguments\
+\
+\ulnone Keyword arguments are a special way of passing arguments into a method as if they are hash values.\
+\
+ex: 
+\b `\
+def happy_birthday(name: \'93Default\'94, age:)\
+  puts \'93Congratulations #\{name\}, you are now #\{age\} years old.\'94\
+end `\
+
+\i\b0 \
+may be called using hash\'85\
+
+\b \
+` hash = \{name: \'93Dan\'94, age: 24\} `\
+` happy_birthday(hash) `\
+\
+\
+
+\i0\b0 \ul Mass Assignment\
+\
+\ulnone We may use a hash in combination with the \'93.send\'94 method to iterate through each item of the hash, setting each value to the object property matching the hash key\
+\
+ex:
+\b  `\
+class User\
+  \
+attr_accessor :name, :user_name, :age, :location, :bio\
+  \
+  def initialize(attributes)\
+    attributes.each do | key, value |\
+      self.send((\'93#\{key\}=\'93), value)\
+    end\
+  end\
+\
+end \
+\
+` attributes = \{name: \'93Daniel\'94, age: 23, location: \'93New York\'94\}\
+User.new(attributes) ` \
+
+\i\b0 (will run properly even though not every property is accounted for within the keys)
+\i0\b \
+\
+
+\b0 ** The only flaw here is that the attr_accessor must still be edited to specifically match any incoming data. If there is no writer method created for a hash key, then the initialization will fail because it will not be able to set that value to any property 
+\i (SEE RUBY NOTES ON DYNAMIC ORM)
+\i0\b \
+\
+\
+\
+}

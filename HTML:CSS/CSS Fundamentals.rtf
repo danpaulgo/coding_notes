@@ -1,0 +1,258 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\margl1440\margr1440\vieww12440\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 CSS Fundamentals
+\b0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\fs24 \cf0 \ul \ulc0 CSS Formats\
+\
+\ulnone Inline: CSS is put directly into HTML tags\
+ex: 
+\b ` <p style=\'93font-style:italic;\'94>Hello World</p>
+\b0 \
+\
+\
+Internal (Embedded): CSS is put into its own section within HTML file\
+ex: 
+\b \
+` <style>\
+	p\{\
+	color:red;\
+	font-style:italic;\
+	\}\
+	/* This is a CSS comment */\
+</style> `
+\b0 \
+\
+\
+External: CSS is kept in external file 
+\b (\'93style.css\'94)
+\b0  and accessed through \'93link\'94 tag \
+ex: 
+\b ` <link rel=\'93stylesheet\'94 href=\'93CSS/style.css\'94> `
+\b0 \
+\
+\
+\ul Selecting Elements\ulnone \
+\
+Tag name\
+
+\b section\{\
+	color:red;\
+	font-style:italic;\
+\}
+\b0 \
+\
+Class Name:\
+
+\b .this_class\{\
+	color:red;\
+	font-style:italic;\
+\}
+\b0 \
+\
+ID Name:\
+
+\b #this_id\{\
+	color:red;\
+	font-style:italic;\
+\}
+\b0 \
+\
+Compound Selectors:\
+
+\b section, nav\{\
+	color:red;\
+	font-style:italic;\
+\}
+\b0 \
+\
+Descendent:\
+
+\b #this_id p\{\
+
+\b0 	
+\b color:red;\
+	font-style:italic;\
+\}\
+
+\b0 ** This will affect all \'93p\'94 elements which are descendants of \'93#this_id\'94 at any level\
+\
+Child:\
+
+\b #this_id > p\{\
+
+\b0 	
+\b color:red;\
+	font-style:italic;\
+\}\
+
+\b0 ** This will affect all \'93p\'94 elements which are direct children of \'93#this_id\'94\
+\
+Sibling:\
+
+\b .this_class + h1\{\
+
+\b0 	
+\b color:red;\
+	font-style:italic;	
+\b0 \
+
+\b \}\
+
+\b0 ** Will affect the very next sibling element of \'93.this_class\'94, only if it has \'93h1\'94 tags. Otherwise will effect nothing.\
+\
+Preceder: \
+
+\b .this_class ~ h1\{\
+
+\b0 	
+\b color:red;\
+	font-style:italic;\
+\}\
+
+\b0 ** This will effect all \'93h1\'94 siblings that come AFTER \'93.this_class\'94\
+\
+Universal:\
+
+\b * \{\
+
+\b0 	
+\b color:red;\
+	font-style:italic;\
+\}\
+
+\b0 ** Will affect all elements on page THAT HAVE NOT been previously specified\
+\
+Attribute:\
+
+\b img[alt=\'93dog\'94]\{\
+	height: 240px;\
+	width: 320px;\
+\}\
+
+\b0 ** This will affect any \'93img" element that has an \'93alt\'94 attribute equal to the \'93dog\'94\
+\
+Further control using attribute selector:
+\b \
+\
+a[href^=\'93http\'94]\{\}
+\b0 \
+** Will affect all anchor tags that have an \'93href\'94 attribute 
+\b starting with 
+\b0 \'93http\'94
+\b \
+\
+img[alt$=\'93room\'94]\{\}\
+
+\b0 ** Will affect all \'93img\'94 elements with an \'93alt\'94 attribute 
+\b ending with 
+\b0 \'93room\'94
+\b \
+\
+a[href*=\'93.com\'94]\{\}\
+
+\b0 ** Will affect all anchor elements with an \'93href\'94 attribute that contains the term \'93.com\'94 
+\b at any point\
+\
+div[class~=\'93dog\'94]\{\}\
+
+\b0 ** Will affect all div elements with a \'93class\'94 attribute that contains the term \'93dog\'94 
+\b separated by spaces\
+
+\b0 ex: 
+\b <div class=\'93animal dog human\'94></div>\
+\
+div[id|=\'93dog\'94]\{\} 
+\b0 (Pipe equals) 
+\b \
+
+\b0 ** Will affect all div elements with a \'93class\'94 attribute that contains the term \'93dog\'94 
+\b separated by dashes\
+
+\b0 ex: 
+\b <div id=\'93animal-dog-human\'94></div>\
+
+\b0 \
+Pseudo:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "https://css-tricks.com/pseudo-class-selectors/"}}{\fldrslt \cf0 https://css-tricks.com/pseudo-class-selectors/}}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 a:hover\{\
+	font-style:bold;\
+	color:blue;\
+\}
+\b0 \
+** Will effect all anchor (\'93a\'94) elements when hovered over\
+\
+Other anchor pseudo options:\
+\
+
+\b a:link\{\}\
+a:visited\{\}\
+a:hover\{\}\
+a:active\{\}
+\b0 \
+\
+\
+\ul Authority of Styling\ulnone : \
+\
+- ID rules over Class\
+- Class rules over Type\
+- Type rules over Universal (*)\
+\
+** If multiple classes are assigned to one element, the class listed last has greatest authority\
+\
+\
+\ul Common CSS Styling Properties\
+\
+\ulnone Font Properties:\
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
+\ls1\ilvl0
+\b \cf0 {\listtext	\'95	}font-family: Arial, Helvetica, serif;\
+{\listtext	\'95	}font-style: normal | italic;\
+{\listtext	\'95	}font-size: 100% | 1em | 12px | 12pt;\
+{\listtext	\'95	}font-weight: normal | bold;\
+{\listtext	\'95	}color: white | #ffffff | rgba(255,255,255,1);
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+Text Properties:\
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
+\ls2\ilvl0
+\b \cf0 {\listtext	\'95	}text-align: left | center | right;\
+{\listtext	\'95	}text-decoration: none | underline | overline | line-through;\
+{\listtext	\'95	}text-indent: 1% | 1em | 1pt | 1px;\
+{\listtext	\'95	}text-shadow: 3px 3px 10px #000;\
+{\listtext	\'95	}text-transform: none | capitalize | lowercase | uppercase;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \
+Size/Spacing Properties:\
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
+\ls3\ilvl0
+\b \cf0 {\listtext	\'95	}letter-spacing: normal | 1em | 12pt | 12px;\
+{\listtext	\'95	}line-height: normal | 1em | 12pt | 12px;\
+{\listtext	\'95	}word-spacing: normal | 1em | 12pt | 12px;\
+{\listtext	\'95	}word-wrap: normal | break-word;\
+{\listtext	\'95	}white-space: normal | no-wrap;
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+Gradient Backgrounds:\
+\
+{\field{\*\fldinst{HYPERLINK "http://www.colorzilla.com/gradient-editor/"}}{\fldrslt http://www.colorzilla.com/gradient-editor/}}\
+}

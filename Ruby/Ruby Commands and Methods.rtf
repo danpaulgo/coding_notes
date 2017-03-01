@@ -1,0 +1,480 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green68\blue254;\red102\green177\blue50;}
+\margl1440\margr1440\vieww10800\viewh7280\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 Ruby Commands and Methods\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "http://ruby-doc.org/core-2.2.2/"}}{\fldrslt 
+\b0\fs24 \cf0 http://ruby-doc.org/core-2.2.2/}}
+\b0\fs24 \
+(List of all Ruby Internal classes and methods, including \'93Kernel\'94 methods such as \'93puts\'94, \'93chomp\'94, and \'93exit\'94)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Ruby Commands\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul \ulc0 ctrl+C\ulnone : Stops ruby program from running\
+\ul \
+gets\ulnone  (get string): Allows user to input string to fill variable\
+ex: ` name = gets ` will promt user to enter a string to fill \'93name\'94 variable\
+\
+\ul include\ulnone : Takes all methods from a particular file and \'93includes\'94 them in the current file (including Ruby module libraries such as \'93Comparable\'94)\
+ex: ` include \'93/Document/additional_methods\'94 ` (may leave out \'93.rb\'94 extension)
+\b \
+\
+
+\b0 \ul irb\ulnone  (interactive ruby): Allows user to write ruby code and run it directly in the console\
+
+\b \
+
+\b0 \ul print\ulnone : Prints string to console (similar to \'93puts\'94 but does not add new line)\
+ex: ` print \'93Hello World!\'94 `
+\b \
+\
+
+\b0 \ul puts\ulnone  (put string): Prints string to console on new line\
+ex: ` puts \'93Hello World!\'94 `\
+\
+\ul require\ulnone : Loads and runs another file within the current file\
+ex: ` require \'93./includes/header.rb\'94 `\
+\
+\ul ruby\ulnone : Opens ruby file in the console\
+ex: ` ruby hello.rb `\
+\
+\
+
+\b Creating Ruby Methods\
+\
+
+\b0 Simple method that takes no arguments and adds the numbers 3 and 5 together, then prints to screen (method is created first, and then called, which returns the integer \'938\'94):\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i\b \cf0 def add\
+  puts 3 + 5
+\i0 \
+
+\i end\
+\
+add
+\i0\b0 \
+\
+\
+This method returns the sum of 2 numbers which may be entered as arguments\
+\
+
+\i\b def add (a, b = 5)\
+  return a + b\
+end\
+\
+add 3, 5
+\b0    (will return the integer \'938\'94)\
+
+\b add 9.5, 3.3   
+\b0 (will return the float \'9312.8\'94. no parentheses necessary when calling method)\
+
+\b add (10)   
+\b0 (will return the integer \'9315\'94 because a = 10 and b has a default value of 5)
+\b  \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i0\b0 \cf0 ** Default arguments must be placed at end of argument list\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i0 \cf0 ** When calling a method with multiple arguments, you may use keywords to define arguments if you don\'92t remember order\
+ex:\
+
+\b ` def happy_birthday(name:, age:) 
+\i\b0 (note colon \'93:\'94 marks after arguments)
+\i0\b \
+  puts "Happy Birthday, #\{name\}! You are now #\{age\} years old."\
+end `\
+\
+
+\b0 could be called like\'85\
+\
+
+\b ` happy_birthday(age: 24, name: \'93Daniel\'94) ` 
+\b0 \
+**Works even though arguments are called in reversed because arguments are specified by keyword\
+\
+OR\
+\
+
+\b ` hash = \{age: 24, name: \'93Daniel\}\
+` happy_birthday(hash) `\
+\
+
+\b0 ** Any hash can be loaded into a class instance if it has the following initialize method:\
+
+\b ` def initialize\
+	attributes.each do | key, value |\
+		self.send((\'93#\{key\}=\'93), value) \
+	end\
+end `\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i\b0 \cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i0\b \cf0 Ruby Block Methods\
+\
+
+\b0 ** A block is a simple unit of code that starts with the \'93do\'94 keyword and ends with the \'93end\'94 keyword. Blocks may also be enclosed within curly brackets \'93\{ (code) \}\'94 which is standard for blocks containing only one line of code. 
+\b \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 def block_method\
+  	puts "This is line 1"\
+	yield\
+	puts "This string comes after the block"\
+	yield\
+end\
+\
+block_method do\
+	puts \'93This is a string derived from the block\'94\
+end
+\i0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** The string represented in the block will be printed in place of the \'93yield\'94 keyword\
+** The method will not run if it includes \'93yield\'94 and is not called with a block
+\b \
+
+\b0 \
+
+\b def get_name\
+	print "Enter your name: "\
+	name = gets.chomp\
+	yield name\
+end\
+\
+get_name do | var_name |\
+	print "That's a cool name, #\{var_name\}\\n"\
+end\
+\
+
+\b0 ** This method will allow inclusion of the name variable into the argued block\
+** Variable used in block does not need to be the same as variable used in method (name vs var_name)\
+\
+Using \'93yield\'94 with parameter:\
+\
+
+\b def yield_with_argument(num)\
+	yield(num)\
+end\
+\
+yield_with_argument(5) do | num |\
+	puts \'935 multiplied by 10 is  #\{(num * 10).to_s \}\
+end\
+	
+\b0 \
+\
+\
+\
+\
+\ul \
+String Methods That Take Blocks\ulnone \
+\
+\ul .each_char\ulnone : Takes an action after each character of a string\
+ex: ` 
+\b \'93Hello\'94.each_char \{ | c | print \'93#\{c\}+\'94 \}
+\b0  ` would return the string \'93H+e+l+l+o+\'94 \
+\
+\ul .each_line\ulnone : Similar function to \'93each_char\'94 but takes action on each line\
+ex:\
+
+\b string = \'93This is line 1\\nThis is line 2\\nThis is line 3\'94\
+string.each_line do | line |\
+	print \'93 - \'94 + line\
+end
+\b0 \
+This would print a \'93 - \'93 at the beginning of each line\
+\
+\
+\ul Array Methods That Take Blocks\
+\
+.all\ulnone : Returns boolean value if all of the items in the array meet the given condition\
+\
+ex:\
+
+\b arr = [1,2,3,4,5,6,7,8,9]\
+array.all?\{ | num | num > 5 \}\
+
+\b0 ** This would return a boolean value of false\ul \
+\
+.any?\ulnone : Returns boolean value if any of the items in the array meet the given condition\
+\
+ex:\
+
+\b arr = [1,2,3,4,5,6,7,8,9]\
+array.any?\{ | num | num > 5 \}\
+
+\b0 ** This would return a boolean value of true
+\b \
+
+\b0 \ul \
+.collect\ulnone : Same as \'93.map\'94\ul \
+\
+.count\ulnone : Similar to \'93\ul .select\ulnone \'94 method, but returns a count of selected items, rather than returning a full array of items.\
+\
+ex:\
+
+\b arr = [1,2,3,4,5,6,7,8,9]\
+count = arr.count do | num |\
+	num > 5\
+end\
+
+\b0 ** This would return an integer value of \'934\'94 because there are 4 items in the array that are greater than 5\
+\
+\ul .detect\ulnone : Returns the first item for which the given condition is true\
+\
+ex:\
+
+\b arr = [1,2,3,4,5,6,7,8,9]\
+count = arr.detect do | num |\
+	num > 5\
+end\
+
+\b0 ** This would return the integer \'936\'94\ul \
+\
+.each\ulnone : Basic looping method that loops through each item of a hash or array\
+\
+\ul .find\ulnone : Same as \ul .detect\ulnone \
+\
+\ul .find_all\ulnone : Same as \ul .select\
+\
+.map\ulnone : Returns array of all items after set operation\
+\
+ex:\
+
+\b arr = [1,2,3,4]\
+count = arr.map do | num |\
+	num.to_s\
+end\
+
+\b0 ** This would return the array of strings [\'931\'94, \'932\'94, \'933\'94, \'934\'94]\
+\
+** Similar to \'93.each\'94 but returns array of results as opposed to original array\
+\
+\ul .reject\ulnone : Returns a new array in which all elements generated by block return a \'93false\'94 value\
+ex:\
+
+\b groceries = ["salad", "pie", "greens", "milk", "cheese", "bread"]\
+new_list = groceries.reject do | grocery |\
+	grocery.include?("s")\
+end
+\b0 \
+** This would create a new array that does not include any string items with the character \'93s\'94. Specifically [\'93pie\'94, \'93milk\'94, \'93bread\'94]\
+\
+\ul .select\ulnone : Returns a new array in which all elements generated by block return a \'93true\'94 value\
+ex:\
+
+\b arr = [1,2,3,4,5,6,7,8,9]\
+new_arr = arr.select do | num |\
+	num != 5 && num !=6 \
+end\
+
+\b0 ** This would create a new array entitles \'93new_arr\'94 with all values of the original \'93arr\'94 array that are equal or greater to 5. Specifically [1, 2, 3, 4, 7, 8, 9].
+\b \
+
+\b0 \
+\
+\ul Hash Methods That Take Blocks\
+\
+\ulnone \
+\ul .keep_if\ulnone : Alters hash to only include elements that meet condition specified in block\
+ex:\
+
+\b info = \{name: "Daniel", age: 23, :fav_color => "orange"\}\
+info.keep_if do | key, value |\
+	!value.is_a?(Integer)\
+end\
+
+\b0 ** This would actually change the hash to \'93keep\'94 any \'93values\'94 that are \'93not integers\'94 (or remove any values that are integers), changing the value of the \'93info\'94 hash to \{ :name => \'93Daniel\'94, :fav_color => \'93orange\'94 \}\
+\
+\ul .reject\ulnone : Creates new hash that only includes elements that do NOT meet the condition specified in block\
+ex:\
+
+\b hash = \{name: "Daniel", age: 23, :fav_color => "orange"\}\
+new_hash = hash.reject do | key, value |\
+	value.is_a?(Integer)\
+end
+\b0 \
+** This would create a new hash that removes, or \'93rejects\'94 all values that are an integer value, returning a has equal to \{ :name => \'93Daniel, :fav_color => \'93orange\'94 \}\
+\
+\ul .select\ulnone :  Creates new hash that only includes elements that meet the condition specified in block\
+\
+\
+
+\b Ruby Internal Methods \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "http://ruby-doc.org/core-2.1.2/String.html"}}{\fldrslt 
+\b0 \cf0 http://ruby-doc.org/core-2.1.2/String.html}}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i\b0 \cf0 name = \'93Daniel Goldberg\'94\
+list = [\'93Joe\'94, \'93Sally\'94, \'93Ray\'94, name]\
+data = \{:name => name, \'93birth_month\'94 => \'93June\'94, :favNumber = 7 \}\
+\
+@ = Hash method\cf2 \
+\cf0 % = Array Method\
+& = String method\
+# = Number method\cf3 \
+\cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i0 \cf0 \ul .class\ulnone : Returns the class of a piece of data\
+ex: ` name.class ` would return \'93String\'94\
+ex: ` 6.5.class ` would return \'93Float\'94\
+\
+\ul @%.count()\ulnone : Returns the number of items in array, or number of matching items (if argument is entered)\
+ex: ` list.count ` would return the integer \'934\'94\
+ex: ` list.count(\'93Ray\'94) ` would return the integer \'931\'94\
+\ul \
+defined?()\ulnone : Returns variable scope if variable is assigned, or \'93nil\'94 if variable is not assigned\
+ex: ` defined?(list) ` would return the string value \'93local_variable\'94\
+\
+\
+\ul @%.delete()\ulnone : Returns and deletes item from array or hash based on value\
+ex: ` list.delete(\'93Joe\'94) ` would return the string \'93Josh\'94 and also delete \'93Josh\'94 from the \'93list\'94 array
+\i \
+\
+
+\i0 \ul &.downcase\ulnone : Returns string in all lowercase letters\
+ex: ` name.downcase ` would return \'93daniel goldberg\'94\
+\
+\ul %.drop()\ulnone : Returns the original array with a certain number of items removed from the beginning (does not affect original array)\
+ex: ` list.drop(2) ` would return [\'93Ray\'94, \'93Daniel\'94] but would not modify the original \'93list\'94 array\
+\
+\ul #.even\ulnone : Returns boolean value of whether number is even or not\
+ex: ` 10.even? ` would return a boolean value of \'93true\'94\
+\
+\ul @.fetch()\ulnone : Returns hash value by key\
+ex: ` data.fetch(:name) ` would return the string \'93Daniel Goldberg\'94\
+\
+\ul @%.first\ulnone : Returns the last value in an array or last key/value in a hash\
+** This method works for both arrays and hashes but \'93.last()\'94 only works for arrays\
+\
+\ul %.flatten\ulnone : Returns an array of arrays as one single dimensional array including all values\
+\
+\ul @.has_key?()\ulnone : Returns boolean value of whether hash includes certain key\
+ex: ` data.has_key(:birth_month) ` would return a boolean value of \'93false\'94\
+\
+\ul @.has_value?()\ulnone : Returns boolean value of whether hash includes certain value\
+ex: ` data.has_value(\'93Daniel Goldberg\'94) ` would return a boolean value of \'93true\'94\
+\
+\ul %.include?()\ulnone : Returns boolean value of whether item is in array or not\
+ex: ` list.include? \'93Daniel\'94 ` would return a boolean value of \'93true\'94\
+\
+\ul %.index()\ulnone : Returns array index of value entered. If value appears more than once, it will return the index of that value\'92s first appearance\
+ex: ` list.index(\'93Ray\'94) ` will return an integer of \'932\'94\
+\
+\ul .inspect\ulnone : Returns a string containing a human-readable representation of an object.\
+ex: ` puts list.inspect ` would print [\'93Joe\'94, \'93Sally\'94, \'93Ray\'94, \'93Daniel\'94] to screen\
+\
+\ul @.invert\ulnone : Returns hash value with keys and values of original hash inverted\
+ex: ` data.invert ` would return the following hash \
+\{\'93Daniel Goldberg\'94 => :name, \'93June\'94 => \'93birth_month\'94, 7 => :favNumber\}\
+\
+\ul %.join()\ulnone : Returns array in from of a string with argument in between each item\
+ex: ` list.join(\'93__\'94) ` would return the string \'93Joe__Sally__Ray__Daniel Goldberg\'94\
+\
+\ul @.keys\ulnone : Returns array of hash keys\
+ex: ` data.keys ` would return [:name, \'93birth_month\'94, :favNumber]\
+\
+\ul %.last\ulnone : Returns last item in array\
+ex: ` list.last ` would return the string \'93Daniel\'94\
+\
+\ul @%&.length\ulnone : Returns length of a string or number of items in array or hash with an integer value\
+ex: ` name.length `would return the integer \'9315\'94\
+\
+\ul %@.member?()\ulnone : Returns boolean value to say whether a certain piece of data exists in an array or hash. Same as \'93.has_key?()\'94 method for hashes. \
+ex: ` list.member?(\'93Joe\'94) ` would return a boolean value of \'93true\'94\
+\
+\ul @.merge()\ulnone : Merges two hashes and returns result (without editing original hash)\
+ex: ` newData = data.merge(\{:favAnimal = \'93cat\'94, :favCar = \'93ferrari\'94\}) ` would add items onto data and store into a new has called \'93newData\'94\
+\
+** If two items have the same key during merge, the item from the hash being merged will be kept\
+ex: ` data.merge(\{:name => \'93Joe\'94)\} ` will return an array with a :name value of \'93Joe\'94 instead of \'93Daniel Goldberg\'94\
+\
+\ul @%.min\ulnone : Will return the minimum value in an array, or the key/value pair with the minimum key in a hash (numeric/alphabetical order)\
+ex: ` data.min ` would return an error because string and symbol values cannot be compared\
+\
+\ul .nil?\ulnone : Asks a piece of data whether or not it is \'93nil\'94 which will be false in most cases\
+ex: ` 0.nil? ` would return false even though ` nil.to_i ` would return the integer \'930\'94\
+ex: ` nil.nil? ` would return the boolean value \'93true\'94\
+\
+\ul #.odd?\ulnone : Returns boolean value of whether number is odd or not\
+ex: ` 10.odd? ` would return a boolean value of \'93false\'94\
+\
+\ul %.pop\ulnone : Returns and removes last item from array\
+ex: ` list.pop ` would return the string \'93Daniel\'94 and also remove \'93Daniel\'94 (name) from the array\
+\
+\ul %&.reverse\ulnone : Returns string with characters reversed, or array with items reversed\
+ex: ` name.reverse ` would return \'93grebdloG leinaD\'94\
+\
+\ul @%.shift\ulnone : Returns and removes first item from array or hash\
+ex: ` list.shift ` would return the string \'93Joe\'94 and also remove \'93Joe\'94 from the array\
+\
+\ul %.shuffle\ulnone : Returns array in random order\
+ex: ` list.shuffle ` may return something like [\'93Sally\'94, \'93Daniel Goldberg\'94, \'93Ray\'94, \'93Joe\'94]\
+\
+\ul @%&.size\ulnone : Returns the number of characters in a string or the number of elements in a hash or array\
+\
+\ul %slice()\ulnone : Returns portion of array using 2 arguments (1st argument = starting position, 2nd argument = number of items to return). Does not modify original array\
+ex: ` list.slice(1, 2) ` would return [\'93Sally\'94, \'93Ray\'94]\
+\
+\ul %.sort\ulnone : Sorts items in an array alphabetically or in numeric order\
+\
+\ul &split()\ulnone : Converts a string to an array using separator in string as argument\
+ex: ` \'93hello, goodbye, please, thanks\'94.split(\'93,\'94) ` would return an array [\'93hello\'94, \'93goodbye\'94, \'93please\'94, \'93thanks\'94]\
+\
+\ul @.store()\ulnone : Adds item to the end of hash\
+ex: ` data.store(:favColor, \'93orange\'94) ` would add the string value \'93orange\'94 to the end of the \'93data\'94 hash with a key of :favColor\
+\
+\ul &.strip\ulnone : Removes any extra space, or extra lines from the beginning and end of a string\
+ex: ` \'93     hello\\n\'94.strip ` would return the string \'93hello\'94\
+\
+\ul &.to_i\ulnone : Converts string to integer\
+ex: ` \'935\'94.to_i ` would return the integer \'935\'94 \
+\
+\ul #.to_s\ulnone : Converts integer to string\
+ex ` 5.to_s ` would return the string \'935\'94\
+\
+\ul %.uniq\ulnone : Returns array without duplicates\
+ex: ` [1, 2, 3, 4, 4, 2, 5].uniq ` would return the array: [1, 2, 3, 4, 5]
+\b \
+\
+
+\b0 \ul &.upcase\ulnone : Returns string in all uppercase letters\
+ex: ` name.upcase ` would return \'93DANIEL GOLDBERG\'94\
+\
+\ul @.values\ulnone : Returns array of hash values\
+ex: ` data.values ` would return an array of [\'93Daniel Goldberg\'94, \'93June\'94, 7]\
+\
+\ul @.values_at()\ulnone : Returns array of values that correspond to entered keys\
+ex: ` data.values_at(:name, \'93birth_month\'94) ` would return an array of [\'93Daniel Goldberg\'94, \'93June\'94]\
+\
+** Command with exclamation mark \'93!\'94 at the end usually means it will change the original variable\
+ex: ` name.upcase ` will not only return \'93DANIEL GOLDBERG\'94 but it will change the original variable \'93name\'94 to \'93DANIEL GOLDBERG\'94\
+\
+\ul Range to array\
+\
+\ulnone ex: ` (1..5)to_a ` will return the array [1, 2, 3, 4, 5]}

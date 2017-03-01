@@ -1,0 +1,67 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 Troubleshooting a Rails Application\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0\fs24 \cf0 \ul \ulc0 Reading an Exception\
+\
+\ulnone ** When looking at a Rails stack trace (list of method calls that application was in the middle of when exception was thrown), you usually want to focus on the filename and line number listed in the topmost line\ul \
+\
+\
+Adding Missing Components\
+\
+\ulnone To complete a request, Rails needs:\
+\
+1. Database table\
+2. Route specifying which controller and action should handle requests for given URL\
+3. A controller action to handle the request\
+\
+Steps to create action:\
+\
+1. Create table using \'93generate model\'94 command\
+2. Run migration to add table to database\
+3. Create route in \'93config > routes\'94 to connect URL to controller action\
+4. Create controller using \'93generate controller\'94 command\
+5. Create action in \'93app > controllers\'94\ul \
+\
+\
+Fixing General Mistakes in Code\
+\
+\ulnone ** When error is shown at very end of the file (\'93end\'94 keyword), it usually means that an \'93end\'94 keyword is missing somewhere earlier in the file\ul \
+\
+\
+Fixing Problems with Views\
+\
+\ulnone - Console will list all files rendered when a new page is opened. If there is a problem with the view, you may edit these files\
+- Views are made up of application-wide layout, page template, and partials\
+- Use \'93find in files\'94 to find specific string in project that needs editing\ul \
+\
+\
+Fixing Database Issues\
+\
+\ulnone - Errors can be handled using \'93rescue\'94 command, flash notices, and redirects\
+ex:\
+
+\b ` def show\
+	@page = Page.find(params[:id])\
+ rescue ActiveRecord::RecordNotFound\
+	flash[:notice] = \'93We couldn\'92t find that page.\'94\
+	redirect_to action: :index\
+end `\
+
+\b0 ** If user tries to visit a page with an id that is not included in the database, it will redirect to the index page with a flash notice at the top stating that the page could not be found\ul \
+\
+\
+General Tips\
+\
+\ulnone - Make sure to write automated tests or specs: {\field{\*\fldinst{HYPERLINK "http://guides.rubyonrails.org/testing.html"}}{\fldrslt http://guides.rubyonrails.org/testing.html}}\
+- Make changes in small batches and test frequently\
+- Use version control system such as \'93Git\'94\
+- Don\'92t hesitate to use editors \'93Find in Files\'94 feature to find trouble areas\ul \
+\
+}

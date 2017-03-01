@@ -1,0 +1,1636 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Light;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Monaco;
+\f3\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red25\green49\blue68;\red255\green255\blue255;\red47\green47\blue49;
+\red202\green203\blue205;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}}{\leveltext\leveltemplateid1\'00;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}}{\leveltext\leveltemplateid101\'00;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}}{\leveltext\leveltemplateid201\'00;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}}{\leveltext\leveltemplateid301\'00;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}}{\leveltext\leveltemplateid401\'00;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Ruby Glossary\
+\pard\pardeftab720
+
+\fs48 \cf2 Includes: Arrays, Blocks, Booleans, Comments, Hashes, Conditionals, Loops, Math, Methods, Puts/Print Methods, Strings, Switch Statement, Symbols, Ternary Operators, Times/Each Methods, Variables
+\fs80 \
+\
+\pard\pardeftab720\sl920\sa440
+\cf2 Arrays\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 An array is a Ruby data type that holds an ordered collection of values, which can be any type of object including other arrays.\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Creating arrays\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Ruby arrays can be created with either literal notation or the 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Array.new
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 constructor.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 # Array.new constructor\
+variable = Array.new([repeat], [item])\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 empty_arr = Array.new\
+=> []\
+\
+matzes = Array.new(3, "Matz!")\
+=> ["Matz!", "Matz!", "Matz!"]\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 # Array.new copy constructor\
+variable = Array.new(some_array)\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 more_matzes = Array.new(matzes)\
+=> ["Matz!", "Matz!", "Matz!"]\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 # Array literal notation\
+variable = []\
+other_variable = [item1, item2, ..., itemN]\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 bobbies = ["Bobby!", "Bobby!", "Backend Bobby!"]\
+=> ["Bobby!", "Bobby!", "Backend Bobby!"]\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Read more
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl440\sa320
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 		{\field{\*\fldinst{HYPERLINK "http://ruby-doc.org/core-2.0/Array.html#method-c-new"}}{\fldrslt \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 http://ruby-doc.org/core-2.0/Array.html#method-c-new}}\cf4 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Array.each\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 You can iterate over the elements in an array using 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Array.each
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 , which takes a block.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 array.each do |arg|\
+  # Do something to each element, referenced as arg\
+end\
+\
+#or\
+\
+array.each \{ |arg|\
+  # Do something to each element, referenced as arg\
+\}\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 ["Ryan", "Zach"].each do |person|\
+  "#\{person\} is such a great guy!"\
+end\
+\
+Ryan is such a great guy!\
+Zach is such a great guy!\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Read more
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl440\sa320
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 		{\field{\*\fldinst{HYPERLINK "http://ruby-doc.org/core-2.0/Array.html#method-i-each"}}{\fldrslt \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 http://ruby-doc.org/core-2.0/Array.html#method-i-each}}\cf4 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Array.flatten\
+\pard\pardeftab720\sl440\sa240
+
+\f2\b0\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 .flatten
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  returns a one-dimensional version of a multi-dimensional array. It does not overwrite the array with the new array.\
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 [[1,2,3], [4,5,6], 7, [[8,9], 10]].flatten\
+=> [1,2,3,4,5,6,7,8,9,10]\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Read more
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl440\sa320
+\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 		{\field{\*\fldinst{HYPERLINK "http://ruby-doc.org/core-2.0/Array.html#method-i-flatten"}}{\fldrslt \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 http://ruby-doc.org/core-2.0/Array.html#method-i-flatten}}\cf4 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Array.uniq\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 You can remove duplicates from an array using 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Array.uniq
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 .\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 [1,1,1,2,3,4,3,3].uniq\
+=> [1,2,3,4]\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Read more
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl440\sa320
+\ls4\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 		{\field{\*\fldinst{HYPERLINK "http://ruby-doc.org/core-2.0/Array.html#method-i-uniq"}}{\fldrslt \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 http://ruby-doc.org/core-2.0/Array.html#method-i-uniq}}\cf4 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720\sl920\sa440
+
+\fs80 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Blocks\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 A block is a chunk of code that lives inside a control statement, loop, method definition, or method call. It returns the value of its last line. In Ruby, blocks can be created two ways: with braces or with a do/end statement.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 # Blocks that span only one line usually use the braces form\
+objs.method \{ |obj| do_something \}\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 [1,2,3,4].each \{ |number| puts number \}\
+\
+1\
+2\
+3\
+4\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 # Blocks that span multiple lines usually use the do/end form\
+objs.method do |obj|\
+  # do first line\
+  # do second line\
+  # ...\
+  # do nth line\
+end\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 [1,2,3,4].each do |number|\
+  puts "You know what number I love?"\
+  puts "I love #\{number\}!"\
+end\
+\
+You know what number I love?\
+I love 1!\
+You know what number I love?\
+I love 2!\
+You know what number I love?\
+I love 3!\
+You know what number I love?\
+I love 4!\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Booleans\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 In Ruby, there are two boolean values: 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 true
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  and 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 false
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 .\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 true\
+=> true\
+\
+false\
+=> false\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Logical Operators\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Logical operators are used to compare to boolean values. Ruby has 6 operators to compare boolean values: 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 and
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 , 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 or
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 , 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 not
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 , 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 &&
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 , 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 ||
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 , and 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 not
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 .
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 and
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  and 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 &&
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 , 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 or
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  and 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 ||
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 , and 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 not
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  and 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 !
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  have the same functionality but the verbiage operators (
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 and
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 , 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 or
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  and 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 not
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 ) have lower precedence than the symbolic operators (
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 &&
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 , 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 ||
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  and 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 !
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 ).\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 // returns true if both boolean1 and boolean2 are true\
+boolean1 && boolean2\
+boolean1 and boolean2\
+\
+// returns true if either boolean1 or boolean2 are true\
+boolean1 || boolean2\
+boolean1 or boolean2\
+\
+// returns the opposite of boolean\
+!boolean\
+not boolean\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 true && true\
+=> true\
+true && false\
+=> false\
+false and true\
+=> false\
+false and false\
+=> false\
+\
+true || true\
+=> true\
+true || false\
+=> true\
+false or true\
+=> true\
+false or false\
+=> false\
+\
+!true\
+=> false\
+not false\
+=> true\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Read more
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl440\sa320
+\ls5\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 		{\field{\*\fldinst{HYPERLINK "http://phrogz.net/ProgrammingRuby/language.html#table%5F18.4"}}{\fldrslt \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 http://phrogz.net/ProgrammingRuby/language.html#table%5F18.4}}\cf4 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Comparison Operators\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Comparison operators are used to test the relationship between two objects. The equality (
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 ==
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 ) and inequality (
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 !=
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 ) operators can be used on almost any type of value where the other operators are used for numeric comparisons.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 x == y // returns true if two things are equal\
+x != y // returns true if two things are not equal\
+x <= y // returns true if x is less than or equal to y\
+x >= y // returns true if x is greater than or equal to y\
+x < y // returns true if x is less than y\
+x > y // returns true if x is greater than y\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 5 == 5\
+=> true\
+5 != 5\
+=> false\
+2 <= 2\
+=> true\
+2 >= 3\
+=> false\
+1 < 2\
+=> true\
+1 > 2\
+=> false\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Comments\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Adding human-readable comments to your programs is a good idea to help others who read your code understand what it does. However in Ruby, it is common to not write many comments, since the language is so human-readable already. It's usually very easy to quickly understand what a good piece of Ruby code does.\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Single-line\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Single line comments are great for quick notes, reminders, or sharing trivial information.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 # comment text\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 # This is a single line comment.\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Multi-line\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 You can span a comment multiple lines, although Ruby programmers rarely use this. They are useful when making notes for documentation.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 =begin\
+comment line\
+comment line\
+=end\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 =begin\
+This is a comment\
+that spans multiple lines.\
+=end\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Hashes\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Hashes are collections of key-value pairs. Like arrays, they have values associated with indices, but in the case of hashes, the indices are called "keys." Keys can be anything that's hashable, such as integers, strings, or symbols, but they must be unique for the hash they belong. The values to which keys refer can be any Ruby object.\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Creating Standard Hashes\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 There are several ways to create hashes in Ruby. The common most two are the new constructor method and its literal notation. It is also considered a best practice to use symbols as keys. The following are valid in all versions of Ruby.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 # Hash.new constructor\
+my_hash = Hash.new([default_value])\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 empty_hash = Hash.new\
+=> \{\}\
+\
+my_hash = Hash.new("The Default")\
+my_hash["random_key"]\
+=> "The Default"\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 # Hash literal notation\
+my_hash = \{\
+  "key1" => value1,\
+  :key2  => value2,\
+  3 => value 3\
+\}\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 my_hash = \{\
+  :a => "Artur",\
+  :l => "Linda",\
+  :r => "Ryan",\
+  :z => "Zach"\
+\}\
+=> \{:a => "Artur", :l => "Linda", :r => "Ryan", :z => "Zach"\}\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Creating Shorthand Hashes\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 As of Ruby 1.9, there is now a shorthand method for writing hashes that's a lot easier to write. Rather than specifying a symbol then using the hash rockets to define key value pairs, you can now just put the key followed by a colon then the value. The keys get translated into symbols.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 my_hash = \{\
+  key1: value1,\
+  key2: value2\
+\}\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 my_hash = \{\
+  name: "Artur",\
+  age:  21\
+\}\
+=> \{ :name => "Artur", :age => 21 \}\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 if, unless, elsif and else\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 if\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Ruby includes an if statement that can be used to manage a program's control flow. The statement takes a boolean expression and executes certain code only if the boolean expression evaluates to true.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 if boolean_expression\
+  #do something here\
+end\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 if true\
+  puts "I get printed!"\
+end\
+\
+I get printed!\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 unless\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 This is the opposite of an if statement. The statement takes a boolean expression and executes certain code only if the boolean expression evaluates to false.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 unless boolean_expression\
+  #do something here\
+end\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 unless false\
+  puts "I get printed!"\
+end\
+\
+I get printed!\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 elsif\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 A conditional statement used to manage a program's control flow. The statement must be paired with an if or unless block and takes a boolean expression. It runs certain code only if the previous conditional statements do not run and its boolean expression evaluates to true. it is equivalent to writing an else statement that has an if statement in its block.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 if boolean_expression\
+  #do something\
+elsif boolean_expression_2\
+  #do something different\
+else\
+  #do something else\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 x = 5\
+if x > 5\
+  print "I am big!"\
+elsif x == 5\
+  print "I am medium!"\
+else\
+  print "I am small!"\
+end\
+\
+I am medium!\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 else\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 A conditional statement used to manage a program's control flow. The statement must be paired with an if or unless block and takes no arguments. It runs certain code only if the previous conditional statements do not run.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 if boolean_expression\
+  #do something\
+else\
+  #do something else\
+end\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 x = 5\
+if x > 5\
+  print "I am big!"\
+else\
+  print "I am small!"\
+end\
+\
+I am small!\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Loops\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 While Loops\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Ruby includes a while loop that will execute a block of code as long as its condition is true. When the condition becomes false, the code after the end of the loop will be executed.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 while condition_is_true\
+  # do something\
+end\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 i = 1\
+while i < 5\
+  puts "#\{i\} is less than 5!"\
+  i += 1\
+end\
+puts "Done!"\
+\
+1 is less than 5!\
+2 is less than 5!\
+3 is less than 5!\
+4 is less than 5!\
+Done!\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Until Loops\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Ruby includes an until loop that will execute a block of code as long as its condition is false. When the condition becomes true, the code after the end of the loop will be executed.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 until condition_is_false\
+  # do something\
+end\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 counter = 3\
+until counter <= 0\
+  puts counter\
+  counter -= 1\
+end\
+puts "Blast off!"\
+\
+3\
+2\
+1\
+Blast off!\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 For Loops\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 The for loop is used to iterate an object. The Ruby .each method is preferred over the for loop because the for loop does not create a new scope for the object whereas the .each method does. The for loop is rare in Ruby.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 for iterator in iterable_object\
+  # do something\
+end\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 for number in (0..5)\
+  puts number\
+end\
+\
+0\
+1\
+2\
+3\
+4\
+5\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 my_array = ["Matz", "chunky", "bacon"]\
+for item in my_array\
+  puts item\
+end\
+\
+Matz\
+chunky\
+bacon\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Math\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Basic Arithmetic\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Your typical addition, subtraction, multiplication, division, and exponentiation all exist in Ruby and look very similar to your typical use cases in algebra. Note that order of operations holds.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 x + y  #addition\
+x - y  #subtraction\
+x * y  #multiplication\
+x / y  #division\
+x ** y #exponentiation\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 40 + 2\
+=> 42\
+\
+100 - 17\
+=> 83\
+\
+9 * 10\
+=> 90\
+\
+9 / 3\
+=> 3\
+\
+2**3\
+=> 8\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Division\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Division is a tricky situation. If you divide two integers, the outcome will be an integer regardless of remainder (see modulus below for more information). However, if you divide an integer with a floating point number or two floating point numbers, the outcome will account for the remainder.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 10 / 3\
+=> 3\
+\
+10.0 / 3\
+=> 3.33333333333333\
+\
+10 / 3.0\
+=> 3.33333333333333\
+\
+10.0 / 3.0\
+=> 3.33333333333333\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 .divmod\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 If you want to do integer division and retrieve both the quotient and the remainder in one call, then you want to use divmod. You can use divmod on a numeric type and it will return an array with the quotient and the remainder, respectively.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 a.divmod(b)\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 10.divmod(3)\
+=> [3, 1]\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Modulus Division\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 If you would like the remainder from an integer division problem, you would use the modulus operator to retrieve the value.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 x % y\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 10 % 3\
+=> 1\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 .floor\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Returns the largest integer less than or equal to a number.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 expression.floor\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 9.99.floor\
+=> 9\
+\
+(1 + 0.5).floor\
+=> 1\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 .ceil\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Returns the smallest integer greater than or equal to a number.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 expression.ceil\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 45.4.ceil\
+=> 46\
+\
+(4 - 1.9).ceil\
+=> 3\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 PI\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Returns the ratio of the circumference of a circle to its diameter, approximately 3.14159 or in better terms, the value of PI (\uc0\u960 ). Note in syntax , we do not put 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 ()
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  at the end of 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Math::PI
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  because 
+\f2\fs30 \cf2 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Math::PI
+\f0\fs32 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4  is not a function but rather a constant.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Math::PI\
+=> 3.14159265358979\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 .sqrt\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Returns the square root of a number.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Math.sqrt(expression)\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Math.sqrt(100)\
+=> 10.0\
+\
+Math.sqrt(5+4)\
+=> 3.0\
+\
+Math.sqrt(Math.sqrt(122+22) + Math.sqrt(16))\
+=> 4.0\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Methods\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 A Ruby method is used to create parameterized, reusable code. Ruby methods can be created using the syntax:\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 def method_name(arguments)\
+  # Code to be executed\
+end\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 def sum(x,y)\
+  x + y\
+end\
+\
+sum(13, 379)\
+=> 392\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 puts vs. print\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 The puts (short for "put string") and print commands are both used to display the results of evaluating Ruby code. The primary difference between them is that puts adds a newline after executing, and print does not.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 print some_string\
+puts some_string\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 3.times \{ print "Hello!" \}\
+Hello!Hello!Hello!\
+\
+3.times \{ puts "Hello!" \}\
+Hello!\
+Hello!\
+Hello!\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Strings\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Strings are used for storing and manipulating text in Ruby. Strings are written between quotation marks. Both single (') and double (") quotes are supported, but quotes at each end of a single string must match (no "strings' or 'strings")!\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 single_quotes = 'some text goes here'\
+double_quotes = "some text goes here"\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 my_name = "Eric"\
+that_computer = "Eric's Computer" #this syntax is allowed\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Switch statement\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Acts like a big if / else if / else chain. Checks a value against a list of cases, and executes the first case that is true. If it does not find a match, it attempts the default case designated by an else statement. If there is not a default case, then it exits the statement. Unlike languages like JavaScript, Ruby switch statements have no fall through and automatically break. Instead, cases can be comma delimited.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 case value\
+when expression1\
+  #do something\
+when expression2\
+  #do something\
+...\
+when expressionN\
+  #do something\
+else\
+  #do default case\
+end\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 a = ["4"]\
+case a\
+when 1..4, 5\
+  puts "It's between 1 and 5"\
+when 6\
+  puts "It's 6"\
+when String\
+  puts "You passed a string"\
+else\
+  puts "You gave me #\{a\} -- I have no idea what to do with that."\
+end\
+\
+=> You gave me 4 -- I have no idea what to do with that.\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Symbols\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 In Ruby, a symbol is simply a name used in your program. One of the main uses for Ruby symbols is hash keys, especially if you would otherwise use the same string as a hash key over and over. Ruby will create an (almost) unlimited number of string instances for all your hash keys, but will only keep one copy of a symbol in memory at a time. This can really save memory for your programs in the long run.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 :symbol\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 fox1 = :fox\
+fox2 = :fox\
+\
+fox1.object_id\
+=> 430488\
+fox2.object_id\
+=> 430488\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Ternary Operator\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 This is a shorthand statement for a simple if...else statement. It is a useful tool in situations where you have an extremely simple if...else statement where you are trying to assign a value to a variable.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 boolean_expression ? true_expression : false_expression\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 grade = 88\
+status = grade >= 70 ? "pass" : "fail"\
+=> pass\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 times and each Methods\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 .each\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 .each is a built in iterator function in Ruby. It loops through each item in a list, hash, or other iterable object allowing you to perform operations on that value. The block of an .each statement creates a new scope for your variable so you don't accidentally modify the original value.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 iterable_obj.each do |value_of_item|\
+  # do something\
+end\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 one_to_ten = (1..10).to_a\
+one_to_ten.each do |num|\
+  print (num**2).to_s + " "\
+end\
+\
+1 4 9 16 25 36 49 64 81 100\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 .times\
+\pard\pardeftab720\sl440\sa240
+
+\f0\b0\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 .times is a built in iterator function in Ruby. It performs an action a given number of times.\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 num_of_times.times do\
+  # do something\
+end\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 3.times do\
+  puts "I'm in the loop!"\
+end\
+puts "I'm out the loop!"\
+\pard\pardeftab720\sl920\sa440
+
+\f0\fs80 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Variables\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Variables are assigned values using the = operator, which is not to be confused with the == sign used for testing equality. A variable can hold almost any type of value including numbers, strings, arrays, and hashes.\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Assignment\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 variable_name = value\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 name = "Artur"\
+=> "Artur"\
+\
+name_copy = name\
+=> "Artur"\
+\
+age = 21\
+=> 21\
+\pard\pardeftab720\sl760\sa360
+
+\f1\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Changing/Reassignment\
+\pard\pardeftab720\sl440\sa240
+
+\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Syntax
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 variable_name = new_value\
+\pard\pardeftab720\sl440\sa240
+
+\f1\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Example
+\f0\b0 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720
+
+\f2\fs30 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 name\
+=> "Artur"\
+name_copy\
+=> "Artur"\
+age\
+=> 21\
+\
+name = "Dustin"\
+=> "Dustin"\
+name_copy\
+=> "Artur"\
+name_copy = name\
+=> "Dustin"\
+age = 22\
+=> 22
+\f3\fs32 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+}

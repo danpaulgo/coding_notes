@@ -1,0 +1,343 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww10700\viewh7380\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 Ruby Objects, Classes & Modules\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0\fs24 \cf0 \ul \ulc0 \
+\
+Ruby Internal Classes\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone - Object (Base class from which all other classes inherit from)\
+- Marshal (Allows user to save collection of ruby objects in string format)\
+- File\ul \
+\ulnone - String\
+- Integer\
+- Float\
+- Array\
+- Hash\
+- TrueClass/FalseClass (booleans)\
+\
+** Kernel is a module included within the ruby Object class\
+\
+** Class names always begin with a capital letter\
+\
+ex: ` 
+\b name = String.new(\'93Daniel\'94) `
+\b0 \
+**This would create a new instance (Object) of the \'93String\'94 class called \'93name\'94 with a value of \'93Daniel\'94\
+\
+** Calling the method \'93\ul .methods\ulnone \'94 on a ruby internal class will list all the internal class methods\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Creating Classes\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone class MyClass\
+\
+	def initialize\
+		puts "This is the initialize method."\
+	end\
+\
+	CONSTANT = []\
+	\
+	def self.class_method\
+		puts \'93This is a class method which can only be called using the class name\'94\
+	end\
+\
+	def instance_method\
+		puts \'93This is an instance method which can only be called using the name of a 		created instance\
+	end\
+\
+	def item=(item)\
+		CONSTANT << item\
+	end\
+end\
+\
+new_instance = MyClass.new\
+new_instance.instance_method\
+MyClass.class_method\
+new_instance.item = \'93new\'94\
+MyClass::CONSTANT 
+\b0 (returns \'93MyClass\'94 CONSTANT array)\
+\
+** Initialize method is automatically called when class is instantiated \
+\
+** Class methods use \'93implicit return\'94 which means the last line within the method is the return value\
+\
+** Define to_s method within class in order to control what is printed to screen when class is called (as opposed to an obsolete memory code such as \'93MyClass:0x007fa13b11efe8\'94)\
+** Use \'93\ul .inspect\ulnone \'94 method to retrieve this memory code if needed\
+ex: ` MyClass.inspect `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+** \'93self.method\'94 may be used to access class methods within other class methods\ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone \
+Struc\ul t\ulnone : A simple way of creating simple classes in ruby\
+\
+
+\b class NewClass\
+		\
+	attr_accrssor :name, :email\
+	\
+	def initialize(name, email)\
+		@name = name\
+		@email = email\
+	end\
+\
+	def name_email\
+		puts name + \'93: \'94 + email\
+	end\
+end\
+\
+
+\b0 SAME AS:\
+\
+
+\b NewClass = Struct.new(:name, :email)  do\
+	def name_email\
+		puts name + \'93: \'94 + email\
+	end\
+end\
+
+\b0 \
+** Struct allows you to loop through each attribute using \'93each\'94 or \'93each_pair\'94 methods\
+\
+each example:\
+\
+
+\b Instance = NewClass.new(\'93Dan\'94, \'93danpaulgo@aol.com\'94)
+\b0 \
+
+\b Instance.each do | attribute |\
+	puts attribute\
+end\
+
+\b0 ** Would print out \'93Dan\'94 on one line and \'93danpaulgo@aol.com\'94 on the next\
+\
+each_pair example:
+\b \
+\
+Instance = NewClass.new(\'93Dan\'94, \'93danpaulgo@aol.com\'94)
+\b0 \
+
+\b Instance.each_pair do | key, attribute |\
+	puts key + \'93: \'94 + attribute\
+end\
+
+\b0 ** Would print out \'93name: Dan\'94 on one line and \'93email: danpaulgo@aol.com\'94 on the next\
+\
+\
+define_method method:\
+\
+The \'93define_method\'94 can also be used to create new properties and methods\
+\
+ex:\
+
+\b class Person\
+  \
+  def self.define_properties(props)\
+    props.each do | p |\
+      define_method(\'93#\{prop\}=\'94) do | arg |\
+        instance_variable_set(:\'94@#\{prop\}\'94, arg) \
+        
+\i\b0 (this will convert each symbol in the array into a setter method)\
+      
+\i0\b end\
+      define_method(prop) do\
+        instance_variable_get(:\'94@#\{prop\}\'94) \
+        
+\i\b0 (this will convert each symbol in the array into a getter method)\
+      
+\i0\b end\
+    end\
+  end\
+  \
+  self.define_properties([:name, :age, :weight])\
+  
+\i\b0 (this will create instance setter methods for name, age and weight)
+\i0\b \
+\
+end\
+\
+
+\b0 ** This is almost identical to the source code for attr_accessor
+\b \
+\
+
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Instance Variables\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** An instance variable is a variable that is accessible in any instance method in a particular class\
+\
+** We define instance variables by prefacing them with an \'93@\'93 symbol\
+ex:\
+
+\b ` def name=(dogs_name)\
+	@this_dogs_name = dogs_name\
+end `
+\b0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Class Methods/Variables\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone Class variables can be used to store information that is not specific to one object but specific to the class as a whole. A common use of class variables is to store an each instantiated object within a class array variable but using a class method\
+\
+ex:\
+
+\b class Song\
+ \
+  @@all = []\
+ \
+  attr_accessor :name\
+ \
+  def initialize(name)\
+    @name = name\
+    @@all << self\
+  end\
+ \
+  def self.all\
+    @@all\
+  end\
+\
+  def self.find_by_name(name)\
+    self.all.detect do | song | \
+      song.name == name\
+    end\
+  end\
+\
+end\
+\
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
+\ls1\ilvl0
+\b0 \cf0 {\listtext	\'95	}The \'93@@all\'94 array is a class variable that stores every instantiated object. \
+{\listtext	\'95	}The \'93self.all\'94 method returns the class array \'93@@all\'94 so that it may be accessed outside of the class\
+{\listtext	\'95	}The \'93self.find_by_name(name)\'94 method takes a name as an argument and returns the first object within the \'93@all\'94 array that has a name matching the argument (methods like this are called \'93finders\'94)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+** Instead of describing the implementation of finding a person by name, our code simply says what it is doing, not how. This is called an API. Methods within an API should reveal what the object will do, not how it does it.\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Local Variables:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** Local variables can only be accessed within the method in which they are defined\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Setters and Getters\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone Ruby Macros: Macros are methods used to write the definitions of other methods (attr_reader, attr_writer, and attr_accessor)\ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone class MyClass\
+\
+	def set_name = (name)\
+		@name = name\
+	end\
+\
+	def get_name\
+		@name\
+	end\
+\
+	def day=(day)\
+		@day = day\
+	end\
+\
+	def day\
+		@day\
+	end\
+\
+	def hello\
+		put \'93Hello, my name is #\{@name\} and today is #\{@day\}.\'94\
+	end\
+\
+end\
+\
+
+\b0 ** The first method allows user to set the \'93name\'94 variable while the second method allows users to retrieve the \'93name\'94 variable\
+\
+** Variables can also be set and retrieved using \'93.instance_variable_get()\'94 method\
+ex:\
+
+\b ` example = MyClass.new\
+example.instance_variable_get(:@name, \'93Daniel\'94)\
+example.instance_variable_set(:@name) `\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul Inheritance\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** Classes may be created as subclasses of other classes, inheriting all properties and methods included within the parent class\
+ex:\
+\
+
+\b ` class SubClass < MyClass\
+	def hello\
+		puts \'93Hello there!\'94\
+	end\
+end `\
+
+\b0 (this will also include \'93set_name\'94 and \'93get_name\'94 methods even though they are not visible. However, the \'93hello\'94 method is overridden since it is present within the new class\
+\
+** \'93
+\b .ancestors
+\b0 \'94 can be used on class to show hierarchy of inheritance\
+ex: 
+\b ` SubClass.ancestors ` 
+\b0 will output the array: [SubClass, MyClass, Object, Kernel, BasicObject]
+\b \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul Converting from Procedural to OOP\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone 1. Find any data the methods rely on. Is this data related to the core functionality of our program? If so, think about where this data belongs. Should you pass it in as an argument to an #initialize method? Can the class you are writing create the data structure itself?\
+\
+2. Are your methods passing data around as arguments? Could this data instead be made into an instance variable?\
+\
+3. Is there any code that isn't contained in a method? Could that code be placed inside a method in your class and therefore become behavior that belongs to your object?\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Private vs Public\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone Public methods may be accessed within or outside of the class. Private methods may only be accessed within other class methods.\
+\
+** Private methods are always called using the \'93self\'94 keyword: 
+\b ` self.private_method `
+\b0 \
+\
+ex: 
+\b \
+` test = MyClass.new(\'93Awesome Name\'94)\
+test.name `\
+
+\b0 ** This command will only work if \'93MyClass\'94 has a 
+\b public getter method 
+\b0 for the \'93name\'94 variable (or any function for \'93name\'94)\
+\
+\
+}

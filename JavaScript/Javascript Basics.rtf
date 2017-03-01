@@ -1,0 +1,407 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8680\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\b\fs26 \cf0 \ul \ulc0 Javascript Basics
+\b0\fs24 \ulnone \
+\
+** The JavaScript reference section of MDN (Mozilla Developer Network - developer.mozilla.org) offers in depth information on every aspect of the JavaScript language\
+\
+Inserting Javascript into HTML file\
+\
+a. \
+<script src=\'93script.js></script>\
+\
+b. \
+<script>\
+document.write(\'93<p>Here is some Javascript code</p>\'94);\
+</script>\
+\
+** Cannot include file in same script tags as direct Javascript code. Also cannot include 2 Javascript files within same script tags. Must use multiple script tags.\
+\
+** Javascript tags are usually found directly before closing head tag, or directly before closing body tag. This way the browser runs all HTML before attempting to run Javascript.\
+\
+\
+
+\b\fs26 \ul Javascript Variables
+\b0\fs24 \ulnone \
+\
+Syntax for setting variables: 
+\b var variable_name = \'93value\'94;\
+
+\b0 Syntax for calling variables: 
+\b variable_name\
+
+\b0 \
+- When resetting a variable after it has been given an initial value, the \'93var keyword is not necessary.\
+ex: 
+\b variable_name = \'93new value\'94;
+\b0 \
+\
+- Variables cannot be given the same name as a \'93Javascript reserved word.\'94 For example, 
+\b var var = 0; 
+\b0 or 
+\b var return = \'93Hello\'94; 
+\b0 will both produce syntax errors\
+\
+- Variable names cannot begin with a number. For example, 
+\b var 1stVariable; 
+\b0 will produce an error.\
+\
+- Variable names can only contain letters, numbers, underscores (-), and dollar signs ($), and may not begin with a number. A variable name such as \'93
+\b @home%
+\b0 \'94 or \'93
+\b 1stVariable
+\b0 \'94 will produce an error\
+** These rules also apply to objects, object keys, arrays, functions, methods, and properties\
+\
+- Like PHP, Javascript uses a backslash (\\) as an escape character\
+\
+\
+** Concatenation in Javascript is done using a plus sign \'93+\'94\
+ex: \
+var name = \'93Daniel\'94;\
+var greeting = \'93Hello, my name is \'94 + name;\
+\
+\
+
+\b\fs26 \ul Javascript Functions
+\b0\fs24 \ulnone \
+\
+JavaScript functions are formed that same way as in PHP. However, in JavaScript, functions can also be stored in variables \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Example 1\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone \
+function getArea(length, width)\{\
+	var area = length * width;\
+	return area;\
+\}\
+console.log( getArea() );\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Example 2 (note semicolon at end)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone \
+var randomNumber = function()\{\
+	var output = Math.floor(Math.random() * 6) + 1;\
+	return output;\
+\};\
+alert( randomNumber() );\
+\
+\
+
+\b\fs26 \ul Javascript Objects
+\b0\fs24 \ulnone :\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Creating Object Literal\ulnone : Objects in Javascript are similar to arrays in PHP. Each property within the object must be given a key, followed by a value, which can be a string, number, boolean, or array.\
+\
+Example:\
+\
+var data = \{\
+	name: \'91Daniel\'92,\
+	favoriteColors: [\'91blue\'92, \'91orange\'92, \'91red\'92],\
+	favoriteNumber: 7,\
+	Birthday: \'91June 18th\'92\
+\};\
+\
+** Note semicolon after closing brace\
+** Values MUST be stored using single quotes, NOT double quotes\
+\
+\ul Calling object properties\ulnone \
+\
+Dot notation: console.log(data.favoriteColors);\
+\
+Bracket notation: console[\'93log\'94](data[\'93favoriteColors\'94]);\
+\
+\ul Setting object properties\ulnone : Reset property value, or add new property. Make sure to use single quotes as opposed to double quotes when setting value\ul \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone data.name = \'91Daniel Goldberg\'92\
+\
+data.town = \'91Bay Shore\'92\
+\
+data.age = 23\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Arrays of Objects\ulnone \
+\
+var quiz = [\
+	\{\
+	question: \'91How many states are in the US?\'92.\
+	answer: 50\
+	\},\
+	\{\
+	question: \'91How many continents are in the world?\'92,\
+	answer: 7\
+	\},\
+	\{\
+	question: \'91What is the capital of New York State?\'92,\
+	answer: \'91Albany\'92\
+	\},\
+];\
+\
+for (var i = 0; i < quiz.length; i++)\{\
+	document.write( \'93Question \'93 + i + \'93: \'93 + quiz[i].question + \'93<br>\'94);	\
+	document.write( \'93Answer : \'93 + quiz[i].answer);	\
+\}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul Javascript Built-in Objects
+\b \ulnone \
+\
+arrays\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 Array Properties:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul .length\ulnone : Returns the number of items in the array\
+ex: for the array \'93array[1, 2, \'91hello\'92, true]\'94 array.length would equal 4\
+** You may add an item to the end of an array using: array[array.length] = \'93newString\'94\
+\
+Array Methods:\
+\
+\ul concat()\ulnone : Combines two arrays and updates array keys\
+ex: var combinedArray = array1.concat(array2)\
+** items from array1 will be listed first, followed by items from array 2\
+\
+\ul indexOf()\ulnone : Finds if a certain element is listed in an array and returns that elements position (at first appearance)\
+ex:\
+var daysOfWeek = [\'91Monday\'92, \'91Tuesday\'92, \'91Wednesday\'92, \'91Thursday\'92, \'93Tuesday\'92];\
+\'93daysOfWeek.indexOf(\'91Tuesday\'92)\'94 would return an integer value of \'931\'94 (even though \'93Tuesday also appears at position 4)\
+\
+\ul join()\ulnone : Converts array into string with a character, or string, separating each item\
+ex:\
+var daysOfWeek = [\'91Monday\'92, \'91Tuesday\'92, \'91Wednesday\'92, \'91Thursday\'92];\
+\'93daysOfWeek.join(\'91, \'92)\'94 would return \'93Monday, Tuesday, Wednesday, Thursday\'94\
+\
+\ul pop()\ulnone : Removes last item from array. Item can also be stored in a variable\
+ex: \'93var removedItem = array.pop()\'94 would remove the last item from an array and store it in a variable called \'93removedItem\'94\
+\
+\ul .push()\ulnone : Adds item(s) to the end of an array\
+ex: arrayName.push(5, \'93lastAddition\'94)\
+\
+\ul shift()\ulnone : Removes first item from array and resets array keys. Item can also be stored in a variable\
+ex: \'93var removedItem = array.shift()\'94 would remove the first item from an array and store it in a variable called \'93removedItem\'94\
+\
+\
+\ul .unshift()\ulnone : Adds item(s) to the beginning of an array and resets array keys\
+ex: arrayName.unshift(\'93firstArrayItem\'94, 4)
+\b \
+\
+console\
+\
+\
+document\
+\
+\
+floats\
+\
+\
+integers\
+\
+\
+Math\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 Math Properties:\
+\
+Math Methods:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul .ceil\ulnone : Rounds number up, regardless of decimal point\
+ex: \'93Math.ceil(4.2)\'94 would output the integer \'935\'94\ul \
+\
+.floor\ulnone : Rounds number down regardless of decimal point\
+ex: \'93Math.ceil(4.8)\'94 would output the integer \'934\'94\
+\
+\ul .random\ulnone : Returns a long floating point between 0 and 1 (includes 0, but not 1)\
+ex: \'93Math.random()\'94 may return a floating point like \'930.2916527053082383\'94\
+ex: \'93Math.round(Math.random() * 10)\'94 would output a random integer between 0 and 10\
+ex: \'93Math.floor(Math.random() * 6) + 1\'94 would output a random number between 1 and 6\
+** \'93Math.ceil(Math.random() * 6)\'94 is similar to above formula, but there is a small chance Math.random will output a 0, which technically provides a range of 0 - 6.\
+\
+\ul .round\ulnone : Takes the value of a number (most likely floating point) and rounds to the nearest integer\
+ex: \'93Math.round(3.8)\'94 would output the integer \'934\'94\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 strings
+\b0 \
+\
+String Properties:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul .length\ulnone : Returns the length of a certain object, such as a string\
+ex: \'93console.log(\'91Hello There\'92.length)\'94 will print the number \'9311\'94 to the console\
+\
+String Methods:\
+\
+\ul .substr()\ulnone : Returns a portion of a given string based on parameters defining start position and string length. Slightly different from .\ul substring\ulnone .\
+ex: \'93\'91This is a string\'92.substr(8, 8)\'94 will return a new string \'93a string\'94
+\b \ul \
+\
+
+\b0 .toLowerCase()\ulnone : Returns given string with all letters transformed to lowercase. Requires no parameters.\
+ex: \'93Hi David Jones\'94.toLowerCase\'94 will return the string \'93hi david jones\'94\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \
+window: 
+\b0 Global object. Contains everything including \'93document\'94 and \'93console\'94
+\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** any command that doesn\'92t start with an object name such as \'93alert()\'94 can also be written as \'93window.alert()\'94
+\b \
+
+\b0 \
+\
+
+\b\fs26 \ul JavsScript Commands
+\b0\fs24 \ulnone :\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul alert()
+\b0 \ulnone : Prompts popup on webpage with message\
+ex: alert(\'93This is an alert\'94);\
+\
+
+\b \ul console.log()
+\b0 \ulnone : Prints text to Javascript console (found in View > Developer) without printing text to the actual page\
+ex: console.log(\'93Program ran successfully\'94);\
+\
+
+\b \ul document.write()
+\b0 \ulnone : Prints text directly onto webpage\
+ex: document.write(\'93<p>This is some text</p>\'94);\
+\
+
+\b \ul parseInt()
+\b0 \ulnone : Converts strings to integers.\
+ex: \'93parseInt (\'9115\'92) + parseInt(\'9110\'92)\'94 would output the integer \'9325\'94\
+\
+**If parseInt receives a floating point, it will disregard any characters after the decimal point\
+ex: \'93parseInt(\'913.75\'92)\'94 or \'93parseInt(3.75)\'94 will both output the integer \'933\'94 (does not round up)\
+\
+
+\b \ul parseFloat()
+\b0 \ulnone : Converts strings to floating point\
+ex: \'93parseFloat(\'911.75\'92) + parseFloat(\'911.35\'92)\'94 would output the floating point \'933.1\'94\
+\
+** Both parseInt and parseFloat will return a NaN (not a number) error if given a string that does not begin with a number. If the string begins with a number but includes non-numerical characters after, all non-numerical characters will be disregarded.\
+ex: \'93parseInt(\'91number13\'92)\'94 will output a \'93NaN\'94 error\
+ex: \'93parseInt(\'9213number\'92)\'94 will output the integer \'9313\'94\
+\
+
+\b \ul printList()
+\b0 \ulnone : Takes an array as an argument, and prints it out as an ordered list in html\
+\
+
+\b \ul prompt()
+\b0 \ulnone : Displays popup  with message requiring user input. Input can then be saved into a variable\
+ex: var user_name = prompt(\'93What is your name?\'94);\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b\fs26 \cf0 \ul Javascript Loops\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 While Loop\ulnone \
+\
+Example 1:\
+\
+counter = 0\
+while(counter <= 10 )\{\
+	console.log( getRandomNumber(1, 100) );\
+	counter +=1;\
+\}\
+\
+** As long as the counter variable is less than or equal to 10, the loop will repeat, and a random number will be generated. The counter starts at 0 and is increased by 1 at the end of each loop\
+\
+Example 2:\
+\
+var counter = 0;\
+var guess;\
+var randomNumber = Math.floor(Math.random() * 500) + 1;\
+while(guess !== randomNumber )\{\
+	guess = Math.floor(Math.random() * 500) + 1;\
+	counter +=1;\
+\}\
+alert("It took the computer " + counter + " guesses to guess the number " + randomNumber);\
+\
+** This program will generate a random number between 1 and 500, then have the computer repeatedly guess the number until it guesses right. Finally, an alert will pop up saying how many guesses it took, and what the original number was.\
+\
+\
+\ul Do While Loop\ulnone : Runs a loop at least once before testing condition and turning into while loop\
+\
+var guess;\
+var guessCount = 0;\
+var randomNumber = getRandomNumber(1, 10);\
+var correct = true;\
+do\{\
+	guess = parseInt(prompt("I am thinking of a number between 1 and 10. Can you guess it?"));\
+	guessCount +=1;\
+	if(guess === randomNumber)\{\
+		correct = true;\
+	\}else\{\
+	correct = false;\
+	\}\
+\}while(!correct) \
+\
+alert("It took you " + guessCount + " tries to guess the number " + randomNumber);\
+\
+** This program will generate a random number between one and 10, have a user guess the number until they are correct, and then display an alert telling them how many tries it took them to guess the correct number. The program program will run at least once, despite the fact that \'93correct\'94 is initially set to \'93true,\'94 since it begins with a \'93do\'94 statement.\
+\
+\
+\ul For In Loops\ulnone : Used to loop through each key of an object. Can ONLY be used on objects\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\fs24 \cf0 var data = \{\
+	name: \'91Daniel\'92,\
+	favoriteColors: [\'91blue\'92, \'91orange\'92, \'91red\'92],\
+	favoriteNumber: 7,\
+	Birthday: \'91June 18th\'92\
+\};\
+\
+for (var key in data)\{\
+	if (!Array.isArray(data[key]))\{\
+		document.write(key + ': ' + data[key] + '<br>');\
+	\}else\{\
+		document.write(key + ': ' + data[key].join(' - ') + '<br>');\
+	\}\
+\}\
+\
+** This for loop prints out each key followed by its respective property. If the property is an array, then the array list is separated by dashes, using the join method\
+\
+** Must use single quotations when writing strings within the loop\
+\
+** The word \'93key\'94 on the first line is interchangeable and may be decided by user. \
+For example: \'93for (property in data) \{ \}\'94 would also work perfectly fine\
+\
+** MUST use bracket notation when referring to object being looped through within the for loop, unless referring to a specific property.\
+For example: data.key will attempt to call a property with a key named \'93key\'94 as opposed to data[key] will call the key of whichever property is currently being looped through
+\fs26 \
+
+\fs24 \
+}

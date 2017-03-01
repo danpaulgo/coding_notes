@@ -1,0 +1,113 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red246\green250\blue250;}
+\margl1440\margr1440\vieww11080\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\b\fs26 \cf0 \ul \ulc0 jQuery Basics\
+\
+{\field{\*\fldinst{HYPERLINK "http://api.jquery.com/"}}{\fldrslt 
+\b0\fs24 \ulnone http://api.jquery.com/}}
+\b0\fs24 \ulnone \
+\
+** In order to include jQuery in a project file, use script tag found on {\field{\*\fldinst{HYPERLINK "https://code.jquery.com/"}}{\fldrslt https://code.jquery.com/}}\
+ex: 
+\f1\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+<script \'a0\'a0src="https://code.jquery.com/jquery-3.1.1.js" \'a0\'a0integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" \'a0\'a0crossorigin="anonymous"></script>\
+\
+
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+General jQuery command layout:\
+
+\b $(\'93section\'94).command(function or \'93data\'94)
+\b0 \
+\
+example:\
+
+\b $("#imageGallery li img").click(function()\{\
+	$(this).hide();\
+	$(this).parent().append("<img src='http://tny.im/67u' alt='Kitten'>");\
+\})\
+\
+
+\b0 ** this Function turns an image within a list item into a button. When the button is clicked, the current image disappears, and a new image replaces it. This is done by hiding the current element, and adding a new image element to the images parent element. Using the \'93append()\'94 function, a new \'93omg\'94 tag is added to the end of the \'93li\'94 tag\
+\
+** It is best practice to include JavaScript and jQuery script tags at the bottom of the body\
+\
+DOM: Document Object Model\
+\
+{\field{\*\fldinst{HYPERLINK "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"}}{\fldrslt https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model}}\
+\
+- The DOM is the basic tree like layout of the HTML code, including all of its sections and subsections\
+\
+- The Dom can be manipulated using JavaScript to add and remove elements\
+\
+-In order to return information from elements within a certain element, the user can use the \'93document\'94 object in JavaScript\
+examples: \
+- \'93
+\b document.body
+\b0 \'94 will simply return the HTML code of the documents body, as is\
+- \'93
+\b document.head.children
+\b0 \'94 will return all elements within the head of the HTML file, in the form of an array\
+- \'93
+\b document.body.children[1]
+\b0 \'94 will return the 2nd element of the HTML documents body section \
+- \'93
+\b document.getElementsByClassName(\'93homepage\'94)
+\b0 \'94 will return an array of elements that are a part of the CSS class \'93homepage\'94 (note that the dot before homepage is not necessary)\
+\
+** This can be accomplished much easier using jQuery\
+ex: \'93
+\b $(\'91.homepage\'92)
+\b0 \'94 will return the same result as \'93
+\b document.getElementsByClassName(\'91homepage\'92)
+\b0 \'94\
+\
+The \'93
+\b $(this)
+\b0 \'94
+\b  
+\b0 variable can be used to refer to the current section being affected by jQuery when writing a function within the jQuery command\
+\
+\
+Manipulating the DOM:\
+- Add/Remove HTML elements\
+- Update/Read HTML element attributes\
+- Transform HTML elements\
+\
+Traversing the DOM:\
+- Moving from element to element within DOM (child to parent, sibling to sibling)\
+\
+Event Methods:\
+- Pressing keyboard button\
+- Clicking mouse\
+\
+Major categories for jQuery manipulation and information collection (as shown in API Documentation)\
+** Each category has a list of methods for manipulating html and css\
+\
+- Attributes (such as the \'93href\'94 attribute in the link tag)\
+- CSS\
+- Dimensions\
+- Effects (manipulations over time/animations)\
+- Events (pressing key, scrolling, clicking mouse can trigger events)\
+- Offset (similar to dimensions but in relation to entire page)\
+- Traversing (jumping between related elements)\
+\
+** Functions that have been show \'93Deprecated\'94 in top right corner are no longer useful because they are outdated or have been removed\
+\
+\
+\ul 4 P\'92s of Problem Solving
+\b \
+
+\b0 \ulnone \
+- Preparation\
+- Plan \
+- Perform\
+- Perfect\
+\
+\
+\
+\
+\
+}

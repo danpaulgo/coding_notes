@@ -1,0 +1,78 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 \ul \ulc0 PHP Error Handling Notes\ulnone \
+\
+Notice: Notifies user that they probably shouldn\'92t be doing something, but PHP will run the script anyway\
+\
+ex: attempting to access undefined variable\
+\
+\
+Warning: Notifies user that something is wrong with their code that is likely to cause an error in the future\
+\
+ex: Trying to include a file that does not exist\
+ex: Calling a function with he wrong number of parameters\
+\
+\
+Fatal Error: Notifies user that something is wrong with code and PHP is completely unable to process script\
+\
+ex: Dividing by zero (division by zero error)\
+ex: Attempting to access an undefined function\
+ex: Running out of memory\
+\
+\
+System Error: Logical errors that can be prevented with thorough programming\
+External Errors: Failing to open file, database, etc.\
+\
+\
+Telling PHP to display errors:\
+\
+**We want to show the most errors in a development environment, and suppress errors in a production environment\
+\
+1. php.ini file\
+\
+- Find location of php.ini by visiting localhost/dashboard/phpinfo.php and scrolling down to \'93Loaded Configuration File Path.\
+- Open in Terminal by typing \'93sudo vi \'93 followed by path. Enter user password\
+- May also open in TextEdit\
+\
+display_errors (string): Determines whether errors should be printed directly on screen or hidden from user\
+\
+display_startup_errors (boolean): The display of errors which occur during PHP's startup sequence are handled separately from display_errors. PHP's default behavior is to suppress those errors from clients. Turning the display of startup errors on can be useful in debugging configuration problems. But, it's strongly recommended that you leave this setting off on production servers.\
+\
+log_errors (boolean): Logs all errors encountered on system into php_error_log file\
+\
+ex:\
+[04-Aug-2016 01:00:43 Europe/Berlin] PHP Fatal error:  Call to undefined function random_int() in /Applications/XAMPP/xamppfiles/htdocs/Treehouse/Intro to PHP7/random_int.php on line 3\
+\
+html_errors (boolean): If on, error messages will include clickable links to a page describing the error\
+\
+\
+2. .htaccess file on web server\
+\
+**Overrides php.ini file when user does not have direct access or cannot edit php.ini\
+\
+Show hidden files on Mac OS X:\
+- Open terminal\
+- Enter following code\
+\'93defaults write com.apple.finder AppleShowAllFiles YES\
+killall Finder\'94\
+\
+\
+3. Directly in PHP code\
+\
+Functions:\
+\
+1. error_reporting(E_ALL);   //Turns on error reporting. May also use E_NOTICE, E_ERROR, E_WARNING, E_PARSE etc.. E_ALL includes all of these errors in one\
+2. ini_set(\'91display_errors\'92, 1);   //Tells php to display errors on screen (1 = on)\
+3. ini_set(\'91html_errors\'92, 1);   //Tells php to provide link to file in display (1 = on)\
+\
+**Use \'93@\'93 in front of line to suppress errors. \
+ex: @require \'93non_existent_file\'94;   //Will not display error even if file doesn\'92t exist\
+\
+\
+Logging: \
+\
+**All errors are logged in php_error_log}

@@ -1,0 +1,84 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 RegEx\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0\fs24 \cf0 RegEx, or \'93Regular Expressions\'94, describe a sequence of characters that define a search pattern which may be used for:\
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
+\ls1\ilvl0\cf0 {\listtext	\'95	}data validation (email/password validation)\
+{\listtext	\'95	}searching\
+{\listtext	\'95	}mass file renaming\
+{\listtext	\'95	}finding records in database\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+Regex testing: {\field{\*\fldinst{HYPERLINK "http://rubular.com/"}}{\fldrslt http://rubular.com/}}\
+** Includes list of character references\
+ex: 
+\b ` \\d 
+\b0 ` represents \'93any digit\'94\
+\
+Writing regular expressions in Ruby:\
+\
+
+\b /your regex/ \
+
+\b0 OR\
+
+\b Regexp.new(\'93your regex\'94)
+\b0 \
+\
+\
+Reference:\
+\
+Search for a number of individual characters: 
+\b /[abc123]/\
+
+\b0 Search for a range of numbers or letters: 
+\b /[3-7]/ 
+\b0 OR 
+\b /[a-j]/\
+
+\b0 Search multiple conditions using pipe: 
+\b /[ei | [1-5]/ 
+\b0 (will search for the characters \'93ei\'94 together as well as numbers 1 through 5)\
+Double Vowel example: 
+\b /[aeiou][aeiou]/ 
+\b0 (will search for any two vowels right next to each other\
+\
+\
+Regex Methods:\
+\
+\ul .grep\ulnone : Very similar to \'93\ul scan\ulnone \'94 (below) but with minor differences on how they interpret RegEx\
+** {\field{\*\fldinst{HYPERLINK "http://iacutone.github.io/blog/2013/08/22/grep-and-scan-regular-expressions-in-ruby/"}}{\fldrslt http://iacutone.github.io/blog/2013/08/22/grep-and-scan-regular-expressions-in-ruby/}}\
+\
+\ul .match\ulnone : Returns the 
+\b first
+\b0  item in your string that matches the given regular expression\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 ex:\
+
+\b ` string = \'93This is a string.\'94 \
+string.match(/\\w+ain/) `\
+
+\b0 ** This would return the 
+\b MatchData object
+\b0 : #<MatchData \'93rain\'94>\
+** Match is often use to check if a boolean already exists in a particular string (true/false)\ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulc0 \
+.scan\ulnone : Returns an array of all items in your string that match the given regular expression\
+ex:\
+
+\b ` string = \'93This is a string.\'94 \
+string.scan(/\\w+ain/) `\
+
+\b0 ** This would return the array [\'93rain\'94, \'93Spain\'94, \'93main\'94, \'93plain\'94]\
+}

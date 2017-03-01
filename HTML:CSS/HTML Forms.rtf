@@ -1,0 +1,193 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 HTML Forms\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms"}}{\fldrslt 
+\b0 \cf0 https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms}}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0\fs24 \cf0 ** Forms are created using form tags: 
+\b ` <form>form elements</form>\
+\
+Form Attributes
+\b0 \ul \
+\
+\ulnone Action: URL where form will be submitted. Can be full URL or reference URL based on current address\
+\
+Method: HTTP method used for submitting form such as \'93POST\'94 or \'93GET\'94\
+\
+\
+
+\b Form Elements\
+\
+
+\b0 \ul Element Attributes\
+\
+\ulnone id: CSS/JS identifier\
+\
+name: Server side identifier\
+\
+type: Defines element type if necessary. Always needed for input and button elements\
+\
+placeholder: Pale text to fill input until user puts text\
+\
+required: Takes no argument but will report an error if left blank by use\ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulc0 \
+Input element:\ulnone \
+\
+** Can be used for many typed of input, based on type attribute including text, password, checkbox, etc.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "http://www.w3schools.com/html/html_form_input_types.asp"}}{\fldrslt \cf0 http://www.w3schools.com/html/html_form_input_types.asp}}\
+\
+ex: 
+\b ` <input type=\'93text\'94 id=\'93name\'94 name=\'93user_name\'94 placeholder=\'93Enter Name\'94 required> `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 **self closing tag
+\b \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul \
+Textarea Element\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** Similar to \'93input\'94 element with a \'93type\'94 of \'93text\'94 but allows for a larger space to enter text. Made for messages or long text content\
+\
+ex: 
+\b ` <textarea id=\'93bio\'94 name=\'93user_bio\'94></textarea>
+\b0 \ul \
+\ulnone ** Textarea is resizable and adds scroll bar when text is too long for shown area\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Button Element\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** Used to submit form data to server (based on action/method attributes) or reset form, defined in type attribute\
+\
+ex: 
+\b ` <button type=\'93submit\'94 id=\'93submit_button\'94>Sign Up</button>
+\b0 \ul \
+\
+\
+Label Element\
+\
+\ulnone ** Text label used to identify each element of the form for the user\
+\
+for attribute: connected to \'93id\'94 of form element being labeled so when label is clicked, the cursor shows up in the corresponding element \
+\
+ex: 
+\b ` <label for=\'93name\'94>Name:</label> `\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul Fieldset/Legend Elements\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** Used to group together and label groups of elements, such as different elements of an address. Adds space before and after field\
+\
+** Fieldset tags define groups of elements, and legend tags are used within fieldset to label fields\
+\
+ex:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` <fieldset> \
+	<legend>Address</legend>\
+\
+	<label for=\'93street\'94>Street Address:</label>\
+	<input type=\'93text\'94 id=\'93street\'94 name=\'93street\'94>\
+\
+	<label for=\'93city\'94>City:</label>\
+	<input type=\'93text\'94 id=\'93city\'94 name=\'93city\'94>\
+\
+	<label for=\'93state\'94>State:</label>\
+	<input type=\'93text\'94 id=\'93state\'94 name=\'93state\'94>\
+\
+	<label for=\'93zip\'94>Zip Code:</label>\
+	<input type=\'93text\'94 id=\'93zip\'94 name=\'93zip\'94>\
+</fieldset>\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Select/Option Elements\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** Used to create a list of predefined list to choose from\
+\
+ex:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` <label for="job">Job Role:</label>\
+<select>\
+	<optgroup label="Technology">\
+		<option value="frontend">Frontend Developer</option>\
+		<option value="php">PHP Developer</option>\
+		<option value="java">Java Developer</option>\
+	</optgroup>\
+	<optgroup label="Business">\
+		<option value="sales">Sales Person</option>\
+		<option value="marketing">Marketing Strategist</option>\
+	</optgroup>\
+</select> `\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** \'93select\'94 tags are used to hold all \'93option\'94 tags while \'93optgroup\'94 separates categories within select menu\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Radio Buttons (input)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** Similar to checkbox but user may only choose one option (per name)\
+\
+ex:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` <label>Age:</label>\
+<br>\
+ <input type="radio" id="under_13" value="under_13" name="user_age">\
+<label for="under_13" class="light">Under 13</label>\
+<br>\
+<input type="radio" id="over_13" value="over_13" name="user_age">\
+<label for="over_13" class="light">Over 13</label> `\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** \'93radio\'94 type inputs are used to create circles to choose option while labels are used to label each circle \
+** All inputs must have the same \'93name\'94, otherwise a user will be able to choose multiple selections (one from each \'93name\'94)\
+** The first label represents the title, but does not have a \'93for\'94 attribute since only options have a logical need for the \'93for\'94 attribute (the title is unbiased)\
+** Use another language, such as PHP, to force user to assign value in order to submit form\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Checkboxes\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** Allows user to choose 0, 1, or multiple selections from a predefined list of options\
+\
+ex: \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` <label>Interests:</label>\
+<input type="checkbox" id="development" value="interest_development" name="user_interest"><label class="light" for="development">Development</label>\
+\
+<input type="checkbox" id="sports" value="interest_sports" name="user_interest"><label class="light" for="sports">Sports</label>\
+\
+<input type="checkbox" id="music" value="interest_music" name="user_interest"><label class="light" for="music">Music</label> `
+\b0 \
+\
+\
+** Syntax is almost identical to \'93radio\'94 buttons but allows users to choose multiple options (within same name) instead of just one\ul \
+}

@@ -1,0 +1,129 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10740\viewh6540\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 SQLite3\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0\fs24 \cf0 \ul \ulc0 Installation\ulnone \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "http://www.sqlite.org/download.html"}}{\fldrslt \cf0 http://www.sqlite.org/download.html}}\
+\
+Or:\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-19 at 11.24.35 PM.png \width10430 \height4930
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \
+\
+\
+Help documentation: {\field{\*\fldinst{HYPERLINK "http://www.sqlite.org/docs.html"}}{\fldrslt http://www.sqlite.org/docs.html}}\
+\
+\ul Command Line Interface\
+\
+{\field{\*\fldinst{HYPERLINK "http://zetcode.com/db/sqlite/tool/"}}{\fldrslt http://zetcode.com/db/sqlite/tool/}}\
+\
+\ulnone Create Database:\ul \
+
+\b \ulnone ` sqlite3 test_sqlite.db ` 
+\b0 \
+\
+Create Table:\
+
+\b ` create table table_name(id INTEGER PRIMARY KEY, name TEXT); `\
+
+\b0 ** This will create a 2 column table with an id column as a primary key and a name column that receives text\
+\
+See All Tables: 
+\b ` .tables `\
+
+\b0 See All Tables (with schema): 
+\b `.schema `\
+
+\b0 Quit CLI: 
+\b ` .quit `
+\b0  (only command that does not require a semicolon at the end)\
+\
+** When calling data you may use several output modes, such as column mode\
+ex:\
+
+\b ` sqlite> .mode column `\
+` sqlite> .headers on `
+\b0 \
+\
+\
+\ul Differences between SQLite and MySQL\
+\
+\ulnone ** Does not Support 
+\b ` RIGHT OUTER JOIN ` 
+\b0 statements\ul \
+\
+\ulnone Renaming tables in SQLite:\
+
+\b ` ALTER TABLE new_table RENAME TO old_table; `\
+\
+\
+
+\b0 \ul Making Permanent Changes to Database\
+\
+\ulnone 1. Create database\
+2. Create \'93.sql\'94 file with code you would like to execute\
+3. Execute code to data base using terminal command: 
+\b ` sqlite3 database_name.db < 01_action.sql ` \
+\
+
+\b0 ** Databased may also be edited Using \'93DB Browser for SQLite Application\'94\
+\
+\
+\ul Creating and Using Database Within Program\
+\
+\ulnone Creating a new database: 
+\b \
+\
+
+\i\b0 (inside \'93config/environment.rb\'94 file)
+\i0\b \
+` DB = \{:conn => SQLite3::Database.new(db/database_name.db) `\
+
+\b0 ** This will create a \'93database_name.db\'94 file inside the \'93db\'94 directory inside the current folder (if there is no db folder, one will be created automatically)\
+\
+Calling database:\
+\
+
+\b ` DB[:conn].execute(sql) `\
+
+\b0 ** This will call the execute method of on our created database 
+\b DB[:conn] 
+\b0 and execute any sql code held in the sql variable\
+\
+Customize Returned Results:\
+\
+** When we execute SQL code on a Database object, the method returns an array of rows, with each row also in the form of an array (creating a multidimensional array) by default. We can alter the execute method to return an array of hashes instead by setting the Database object\'92s \'93results_as_hash\'94 property to true\
+\
+
+\b ` DB[:conn].results_as_hash = true `
+\b0 \
+\
+
+\i return example: 
+\i0\b \{"id"=>1, "name"=>"Hello", "album"=>"25", 0 => 1, 1 => "Hello", 2 => "25"\}
+\i\b0 \
+
+\i0 ** Note that each values appears twice. First with a string key, and then with an integer key. This way, row values may be called by their column name or array key
+\i \
+
+\i0 \
+\
+\
+\
+\
+\
+\
+\ul \
+\
+\
+}

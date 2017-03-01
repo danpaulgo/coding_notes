@@ -1,0 +1,142 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 Ruby Arrays & Hashes
+\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+Ruby Arrays
+\b0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 Creating an array\ulnone :\
+\
+`new_array = Array.new ` OR ` new_array = [] `\
+ex: new_array = [\'93item_1\'94, \'93item_2\'94, 5, name]\
+\
+** To create array consisting only of strings with no spaces, may use following syntax:\
+` new_array = %w (item_1 item_2 item_3) ` (use \'93%W\'94 to add ability to interpolate strings)\
+\
+\ul Adding items to end of array\ulnone :\
+\
+` new_array << \'93new_item\'94 ` \
+OR\
+` new_array.push \'93new_item_1\'94, \'93new_item_2\'94 `\
+OR\
+` new_array += [\'93new_item_1\'94, \'93new_item_2\'94] `\
+\
+\ul Adding items to beginning of array\ulnone :\
+\
+` new_array.unshift(\'93first_item\'94, \'93second_item\'94) `\
+\
+\ul Adding items to particular position in array\ulnone :\
+\
+` new_array.insert(2, \'93third_array_item\'94) `\
+\
+\ul Removing items from array\ulnone :\ul \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ` new_array.pop ` (returns and removes last item from array)\
+` new_array.shift ` (returns and removes first item from array)\
+\
+` new_array.delete(\'93first_item\'94) ` (will remove all array items equal to string \'93first_item\'94\
+` new_array -= [\'93first_item\'94, \'93second_item\'94] (will remove all items equal to either string \'93first_item\'94 or \'93second_item\'94\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 Accessing array items\ulnone :\
+\
+` new_array.at(0) `\
+OR\
+` new_array[3] `\
+OR\
+` new_array[-1] ` (will access last item in array)\
+\
+\
+\ul Creating array of ordered numbers\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** Use \'93.to_a\'94 method\
+ex: ` (0..10).to_a ` will return the array: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\
+\
+\
+
+\b Ruby Hashes 
+\b0 (similar to JS Object)
+\b \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul \ulc0 Creating New Hash\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone collection = Hash.new\
+OR\
+collection = \{\}\
+ex: ` personal_info = \{ :name => \'93Daniel\'94, \'93birth_month\'94 => \'93June\'94, favorite_number: 7 \} `\
+\
+** Hash keys must all be unique\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 Adding Hash Items\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ` personal_info[\'93favorite_color\'94] = \'93orange\'94 ` \
+OR\
+` personal_info.store(\'93favorite_color\'94, \'93orange) `\
+will add the value \'93orange\'94 with a key of \'93favorite_color to the 
+\b end 
+\b0 of the hash\
+\
+\
+\
+** Hash keys are often written with a colon in front, instead of as a string value (see \'93Ruby Symbols\'94)\
+ex: ` personal_info[:weight] = \'93160lbs\'94\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 Deleting Hash Items\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ` hash_name.delete(hash_value) ` \
+ex: ` personal_info.delete(\'93favorite_number\'94) ` will delete \'93favorite_number\'94 and its value of \'937\'94 from the Hash and will return the integer \'937\'94\
+
+\b \
+
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 Accessing Hash Items\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ` personal_info[\'93birth_month\'94] ` will return the string \'93June\'94\
+OR\
+` personal_info.fetch(:name) ` will return the string \'93Daniel\'94\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 Ruby Symbols\
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
+\ls1\ilvl0\cf0 \ulnone {\listtext	\'95	}The symbol is a ruby datatype commonly used as hash keys\
+{\listtext	\'95	}Ruby symbols are 
+\b immutable
+\b0 , meaning they cannot be modified in the ways string has\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+ex: ` 
+\b :name `\
+` hash = \{:symbol => \'93value\'94, name: \'93Daniel\'94\} `\
+
+\b0 (notice two different types of syntax for setting values to symbols)
+\b \
+
+\b0 \
+\
+
+\b \
+}

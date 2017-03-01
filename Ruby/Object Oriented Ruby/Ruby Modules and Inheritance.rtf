@@ -1,0 +1,209 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww11600\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 Ruby Modules and Inheritance
+\b0\fs24 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Ruby Modules\
+\
+
+\b0 ** Modules are often used as a container to hold a collection of methods which will later be inserted into one or multiple classes using \'93
+\b include
+\b0 \'94\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 Creating Modules\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone module SimpleModule\
+	VERSION = 1.0\
+end\
+\
+
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 Accessing Module Data\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone SimpleModule::VERSION\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul \ulc0 Namespace\ulnone : A container for other items, including classes, constants, and other modules\
+\
+Modules can be used to create namespaces for storing items\
+\
+ex:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 module Container\
+	class MyClass\
+		attr_reader :name\
+		\
+		def initialize(name)\
+			@name = name\
+		end\
+	end\
+end
+\b0 \
+\
+
+\b new_object = MyClass.new(\'93Dan\'94) 
+\b0 (would not work)\
+
+\b new_object = Container::MyClass.new(\'93Dan\'94) 
+\b0 (would work)\
+\
+** When calling on an instance from another class within the same module, you don\'92t need to specify the module name\
+** Modules can be created within modules\
+\
+** To include module libraries in a class, use \'93require_relative\'94 and \'93include\'94 or \'93extend commands\
+ex: \
+
+\b ` require_relative \'93./container.rb\'94 ` 
+\b0 (outside of class)\
+
+\b ` include Container ` 
+\b0 (inside class)
+\b \
+
+\b0 **If you have a module whose methods you would like to be used in another class as instance methods, then you must 
+\b include
+\b0  the module. If you want a module's methods to be used in another class as class methods, you must 
+\b extend
+\b0  the module.\
+\
+** You may include both instance and class methods in one module, through the use of \'93nested modules\'94
+\b \
+
+\b0 ex:\
+
+\b ` module OverArching\
+	\
+	module InstanceMethods\
+		def name\
+			@name\
+		end\
+	end\
+\
+	module ClassMethods \
+		def find_by_name(name) 
+\i\b0 (translates to 
+\b self
+\b0 .find_by_name(name) when \'93extended\'94 to class)
+\i0\b \
+			@all.detect do |a|\
+				a.name == name\
+			end\
+		end\
+	end\
+\
+end `\
+\
+` require_relative \'93./over_arching.rb\'94 `\
+` include OverArching::InstanceMethods `\
+` extend OverArching::ClassMethods `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul \ulc0 \
+\
+Built-In Math Module
+\b \ulnone \
+\
+**
+\b0  Math module has many built-in constants such as:\
+- E\
+- PI\
+- sqrt(num)\
+- cos\
+- sin\
+- hypot(x,y)\
+\
+ex: ` 
+\b Math::PI 
+\b0 ` would return the float \'933.141592\'85\'94\
+ex: ` 
+\b Math::hypot(3, 4) 
+\b0 ` would return the float \'935.0\'94\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Ruby Inheritance\
+\
+
+\b0 ** Ruby classes (subclasses) may inherit structure/methods from overarching classes (superclasses)\
+\
+ex:\
+
+\b ` class SuperClass\
+\
+	def initialize(name)\
+		@name = name\
+	end\
+\
+	def super_method\
+		\'93This is the super method\'94\
+	end\
+\
+end\
+\
+class SubClass < SuperClass\
+\
+	def sub_method\
+		\'93This method is specific to the subclass\'94\
+	end\
+\
+end `\
+
+\b0 \
+- \'93SubClass\'94 is a subclass of \'93SuperClass\'94\
+- All methods in SuperClass (initialize, super_method) are included in SubClass, but sub_method is not included in SuperClass\
+- Must utilize 
+\b require_relative \'93file_path/SuperClass.rb\'94 
+\b0 at top of SubClass file \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 Super Keyword\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6454\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** The super keyword is used to add functionality to a method within a subclass, after it has been defined in a superclass (may be used when inheriting methods from superclass OR module)\
+\
+ex:\
+
+\b ` class Music\
+	\
+	def initialize(name)\
+		@name = name\
+	end\
+\
+end\
+\
+class Album < Music\
+	\
+	def initialize(name)\
+		super\
+		@songs = []\
+	end\
+\
+end\
+
+\b0 ** The \'93Album\'94 initialize method will create a name variable, as well as\
+
+\b \
+\
+HELPER PROJECTS\
+\
+
+\b0 - \'93artist-song-modules-v-000\'94
+\b \
+\
+}

@@ -1,0 +1,39 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 Views, Controllers & Routes
+\b0\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+
+\b Views\
+\
+
+\b0 ** Views are held in app > views and have a \'93.html.erb\'94 extension\
+\
+Views are combined html/ruby documents used to set up the actual layout of each page\
+\
+\
+\ul Forms\
+\
+{\field{\*\fldinst{HYPERLINK "http://guides.rubyonrails.org/form_helpers.html"}}{\fldrslt http://guides.rubyonrails.org/form_helpers.html}}\
+\
+\ulnone Forms may be created on views using the following syntax:\
+
+\b \
+<%= form_for @artic do |form| %> \
+  <p>\
+    <%= form.label :title %><br>\
+    <%= form.text_field :title %>\
+  </p>\
+  <p>\
+    <%= form.label :description %><br>\
+    <%= form.text_area :description %>\
+  </p>\
+  <p>\
+    <%= form.submit %>\
+  </p>\
+<% end %>}

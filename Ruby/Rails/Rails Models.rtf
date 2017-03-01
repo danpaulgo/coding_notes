@@ -1,0 +1,352 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10200\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 Rails Models
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 Setting Up Model\
+\
+\ulnone ** Models are created using same form as scaffolding\
+\
+1/2. Run \'93generate model\'94 command in terminal\
+ex: 
+\b ` bin/rails generate model Page title:string body:text slug:string `\
+
+\b0 ** Will create ruby file creating table within \'93db > migrate\'94 as well as empty model file within \'93app > models > pages\'94\
+** Model name \'93Page\'94 (singular uppercase), converts to table name \'93pages\'94 (plural lowercase)\
+\
+OR\
+\
+1. Run ` 
+\b bin/rails generate migration create_pages `
+\b0  (make sure to use snake_case)\
+** This will create an empty table. The method creating this table can be found in \'93db > migrate\'94\
+\
+2. Go into \'93\'85_create_pages.rb\'94 file and add columns to the table creator \
+ex:\
+
+\b ` class CreateArticles < ActiveRecord::Migration[5.0]\
+  def change\
+    create_table :articles do |t|\
+      t.string :title\
+      t.text :description\
+      t.timestamps\
+    end\
+  end\
+end `\
+
+\b0 ** Will add a title column that takes strings, a description column that takes text, and a timestamp column which is set automatically\
+\
+3. Run migration to create table within database\
+ex: 
+\b ` bin/rails db:migrate `\
+
+\b0 ** To reverse migration (in order to edit table and remigrate), use 
+\b ` bin/rails db:rollback `\
+\
+
+\b0 4. Create ruby file for model inside \'93app > models\'94\
+ex: 
+\b \
+article.rb\
+\
+` class Article < ApplicationRecord\
+end `\
+\
+\
+\
+
+\b0 \ul Model name conversions:\
+\
+\ulnone Model name = Singular, capitalized \
+ex: 
+\b Article\
+\
+
+\b0 Table name = Plural, lowercase\
+ex: 
+\b articles\
+\
+
+\b0 Model filename = Singular, lowercase, \'93.rb\'94 extension\
+ex: 
+\b article.rb
+\b0 \
+\
+Controller class name = Plural, camelcase\
+ex: 
+\b class ArticlesController
+\b0 \
+\
+Controller filename = Plural, ends with \'93_controller.rb\'94\
+ex: 
+\b articles_controller.rb
+\b0 \
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b \cf0 Updating Database\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b0 \cf0 \ul Adding Column To Table\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \ulnone To add \'93Category\'94 column to \'93Posts\'94 table:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b \cf0 ` bin/rails generate migration AddCategoryToPosts category:string `\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b0 \cf0 	** This will create new file inside of \'93db > migrate\'94 with a \'93change method that reads:\
+	
+\b add_column :posts, :category, :string 
+\b0 (1st argument = name of table, 2nd argument = 	attribute name, 3rd argument = datatype)
+\b \
+` bin/rails db:migrate ` 
+\b0 (must run migration after all changes in order to update database)
+\b \
+\
+
+\b0 ** This will add ruby class to \'93db > migrate\'94 with a \'93change\'94 method that adds this column to the database\
+\
+**  We can name the migration whatever we want, but if it's in the form Add<attribute name>To<table name>, the generator will set up a command to add a column to that table for us. So we name it "AddBodyToPosts\'94. (may also use snake_case: \'93add_category_to_posts\'94)\
+\
+** Data can be added to new column using update protocol\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \ul Deleting Column From Table\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \ulnone Example:\ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b \cf0 \ulnone ` rails g migration RemoveColumnFromPosts title:string `\
+` bin/rails db:migrate `\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b0 \cf0 ** This will remove the \'93title\'94 column from the \'93posts\'94 table inside the database\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \ul Update View To Reflect Changes\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \ulnone ** To update view, edit code of page rendered when loaded (can be found in console while server is running)\
+ex: Rendered posts/index.html.erb (can be located in \'93app > views > posts\'94\
+\
+** Rails allows the use of \'93partials\'94 so that identical code (such as the form on the \'93edit\'94 and \'93create\'94 pages) only needs to be updated in one place. Partials are kept in their own file, and can be added to specific pages using \'93render\'94 keyword\
+\
+ex: 
+\b ` <%= render 'form', post: @post %> `\
+
+\b0 1. Renders actual \'93form\'94 file (without extensions)\
+2. Hash allows for post variable to be accessed within post object instances\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \ul Update Controller To Post Changes\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \ulnone 1. Open \'93app > controllers > posts_controller.rb\'94\
+2. Add new parameter (i.e. \'93category\'94) to \'93post_params\'94 method\
+\
+** \'93Create method uses \'93post_params\'94 method as argument to create new \'93Post\'94 object\
+\
+** \'93params.require(:post).permit defines the list of parameters that users are permitted to edit so. Users are unable to edit parameters that are not on this list which prevents malicious activity\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\
+
+\b CRUD Operations
+\b0 \
+\
+Rails Console:
+\b \
+\
+
+\b0 Access rails console using command: 
+\b ` bin/rails console ` 
+\b0 or 
+\b ` bin/rails c `\
+
+\b0 ** Works just like irb, but includes all rails resources and allows all \'93CRUD\'94 commands\
+\
+** Use command \'93exit\'94 to exit rails console\
+\
+\
+Read Operations:\ul \
+\
+.all\ulnone : Selects all data from resource\
+ex: 
+\b ` Post.all `
+\b0 \
+**Returns SQL statement: \'93 SELECT \'91posts\'92.* FROM \'91posts\'92 \'94 \
+** Returns result of SQL statement in the form of an array of objects:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 	[#<Post id: 1, name: "dan", age: 8, post: "Hello!", created_at: "2016-11-05 04:52:29", 	updated_at: "2016-11-05 04:52:29">, #<Post id: 2, name: "jay", age: 55, post: "this is a post", 	created_at: "2016-11-05 04:52:41", updated_at: "2016-11-05 04:52:41">]\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul .last\ulnone : Returns last object added to the resource being called\
+ex: 
+\b ` Post.last `\
+
+\b0 **Returns SQL statement: \'93 SELECT  \'91posts\'92.* FROM "posts" ORDER BY \'91posts\'92.\'92id\'92 DESC LIMIT ?\
+[["LIMIT", 1]] \'94 \
+** Returns single object:\
+	#<Post id: 2, name: "jay", age: 55, post: "this is a post", created_at: "2016-11-05 04:52:41", 	updated_at: "2016-11-05 04:52:41">\
+\
+\ul .first\ulnone : Returns first object added to the resource being called\
+\
+\ul .find()\ulnone : Returns single object based on id\
+ex: 
+\b ` Post.find(1) `\
+
+\b0 **Returns SQL Statement: \'93 SELECT  \'91posts\'92.* FROM \'91posts\'92 WHERE \'91posts\'92.\'92id\'92 = ? LIMIT ?  [[\'91id\'92, 1], [\'91LIMIT\'92, 1]] \'94\
+**Return single object where id is equal to argument:\
+	 #<Post id: 1, name: "dan", age: 8, post: "Hello!", created_at: "2016-11-05 04:52:29", 	updated_at: "2016-11-05 04:52:29"> \
+\
+\
+Create Operations:\
+\
+\ul .new\ulnone : Creates new object which can best stored as variable but does not save object to resource\
+ex:\
+
+\b ` new_post = Post.new `\
+` new_post.name = \'93Joe\'94 `\
+` new_post.age = 25 `\
+` new_post.post = \'93Hi, my name is Joe\'94 `\
+\
+
+\b0 OR\
+\
+
+\b ` Post.new(name: \'93Joe\'94, age: 25, post: \'93Hi, my name is Joe\'94).save `\
+\
+
+\b0 \ul .save\ulnone : Saves new object to resource after being created\
+ex: 
+\b ` new_post.save `\
+
+\b0 **Returns SQL statement inserting data: \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0  INSERT INTO "posts" ("name", "age", "post", "created_at", "updated_at") \
+ VALUES (?, ?, ?, ?, ?)  [["name", "Joe"], ["age", 25], ["post", "Hi, my name is Joe"], ["created_at", 2016-11-05 05:17:33 UTC], ["updated_at", 2016-11-05 05:17:33 UTC]]\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \ul .create\ulnone : This may be used to create an object and save it to the database in one step (\'93.new\'94 and \'93.save\'94 combined)\
+ex:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` Post.create(name: \'93Joe\'94, age: 25, post: \'93Hi, my name is Joe\'94) `
+\b0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \
+\
+Updating Objects:\
+\
+To update specific objects within a resource\'85\
+1. Set the object to a variable using a read operation such as \'93.find\'94\
+2. Set updated values to the new variable\
+3. Save update object to resource\
+\
+Example:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b \cf0 ` jay = Post.last `\
+` jay.name = \'93Jason\'94 `\
+` jay.post = \'93This post has been updated\'94 `\
+` jay.save `\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b0 \cf0 ** This will update the most recent object to have new \'93name\'94 and \'93post\'94 values, then saves it back into the database\ul \
+\ulnone \
+** Access object to update using any read operation and setting the result to a variable to be altered\
+\
+Deleting Operations:\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \ul .destroy\ulnone : Deletes object from database \
+ex:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b \cf0 ` rid = Post.find(1)\
+rid.destroy `\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b0 \cf0 OR\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b \cf0 ` Post.find(1).destroy `\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b0 \cf0 **Returns SQL statement deleting object: \'93 DELETE FROM \'91posts\'92 WHERE \'91posts\'92.\'92id\'92 = ?  [["id", 1]] \'94\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b \cf0 Adding Code Inside Model Class\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b0 \cf0 \ul Validations\ulnone : Used to validate date before it is allowed to be entered into database. \
+\
+ex:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b \cf0 ` class Article < ApplicationRecord\
+\
+  validates :title, presence: true\
+  validates :post, presence: true\
+\
+end ` \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b0 \cf0 ** This will validate that each \'93Article\'94 object has a \'93title\'94 and \'93post\'94 that are \'93present\'94 (not empty).\
+\
+Validation keywords:\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \ul length:\ulnone  Sets minimum/maxiumum length parameters for object attribute before it may be added to database\
+ex: 
+\b ` validates :title, length: \{minimum: 3, maximum: 50\} `\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b0 \cf0 ** Will set validation rule on \'93title\'94 so it must be between \'933\'94 and \'9350\'94 characters before in order to be saved into database\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \ul presence:\ulnone  Sets whether or not (true/false) a particular attribute of an object should to be set before object may be added to database \
+\
+\
+If validation fails, system will return a \'93rollback transaction\'94 message. Information on errors can be found using \'93\ul .errors\ulnone \'94 methods on objects:\
+\
+\ul .errors.any?\ulnone : This will return a boolean value based on whether or not a particular object raises any errors when adding to database\
+ex: 
+\b ` post_object.errors.any? `\
+\
+
+\b0 \ul .errors.full_messages\ulnone : Returns array with string messages regarding all encountered errors\
+ex: 
+\b ` post_object.errors.full_messages? `
+\b0 \
+\
+\
+** Error methods may only be used 
+\i after 
+\i0 attempting to save the object. Error information is saved 
+\i to 
+\i0 object
+\b \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b0 \cf0 \
+}

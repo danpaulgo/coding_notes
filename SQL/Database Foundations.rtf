@@ -1,0 +1,698 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh6040\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 Database Foundations\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\i\b0\fs24 \cf0 Using MySQL
+\i0\b \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 Data Types\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul \ulc0 Strings\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone VARCHER: Generally used for short pieces of text such as titles and names\
+\
+TEXT: Used for longer pieces of text such as descriptions
+\b \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul \
+Numeric\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone INTEGER: Whole numbers\
+\
+FIXED POINT: Floating point with a fixed number of decimal places (all numbers in column have same number of decimal places. For example, money amounts would be fixed to 2 decimal places)\
+\
+FLOAT: A number with decimals but no fixed number of decimal places\
+\
+REAL: Another type of decimal number\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Date & Time\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone DATE: Numeric date such as \'931993-06-18\'94\
+\
+TIME: Numeric time such as \'9313:45:30\'94\
+\
+DATETIME: Combination of date and time such as \'931993-06-18 13:45:30\'94\
+\
+\
+** To write comments in SQL, use \'93--" for single line comments or \'93 /* (code) */\'93 for multiline comments\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 CRUD\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 - Create\
+- Read\
+- Update\
+- Delete\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "https://www.sqlite.org/lang_keywords.html"}}{\fldrslt \cf0 https://www.sqlite.org/lang_keywords.html}}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Creating/Deleting Databases\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 - You may create new database by clicking \'93Create new schema\'94 button at the top of MySQL Workbench. The terms \'93database\'94 and \'93schema\'94 may be used interchangeably.\
+\
+- Database name must be highlighted under \'93Schemas\'94 sidebar in order to run queries on that specific database\
+\
+- Database may be deleted by highlighting database name in sidebar, right clicking, and selecting \'93Drop Schema\'94 
+\b \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul Create Database Using SQL:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` CREATE SCHEMA new_database; ` \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Run this code in query window to create a new database entitled \'93new_database\'94
+\b \
+\
+` CREATE DATABASE IF NOT EXISTS new_database; ` \
+
+\b0 ** Will yield same result as above code, as long as no database by that name already exists \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` CREATE DATABASE new_database DEFAULT CHARACTER SET utf8; ` \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Not completely necessary, but you may set the \'93default character set\'94 when creating database\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \
+\
+Deleting Database:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` DROP DATABASE new_database; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Will delete database entitled \'93new_database\'94
+\b \
+\
+` DROP IF EXISTS SCHEMA new_database; `\
+
+\b0 ** Will delete database entitled \'93new_database\'94 if database exists\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \
+\
+Creating/Deleting Tables
+\b0 \ul \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone Create Table:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` USE movies_db `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Will redirect query window to perform only within selected database\ul \
+\
+\ulnone ` 
+\b CREATE TABLE actors (name VARCHAR(50), age INTEGER);
+\b0  `\
+** Above code will create an \'93actors\'94 table with 2 columns. One column for \'93name\'94 which can hold strings up to 50 characters, and a second column for \'93age\'94 which takes integers.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` CREATE TABLE IF NOT EXISTS movies (id INTEGER PRIMARY KEY AUTO_INCREMENT, title VARCHAR(100) NOT NULL, year INTEGER); `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Will create a new table entitled \'93movies\'94 as long as it does not already exist, with an auto incremented id column, a \'93title\'94 column that accepts strings up to 100 characters and cannot be left empty, and a \'93year\'94 column that accepts integers\
+\
+Delete Table:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` DROP TABLE IF EXISTS actors; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Will delete \'93actors\'94 table from database\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \
+Editing Table
+\b0 \
+\
+Rename Table:\
+\
+
+\b ` RENAME TABLE movies TO movie_table, actors TO actor_table; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Will rename \'93movies\'94 table to \'93movie_table\'94 and \'93actors\'94 table to \'93actor_table\'94\
+\
+Remove all data from table:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` TRUNCATE TABLE actors; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Will delete all data inside \'93actors\'94 table without deleting actual table from database\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul ALTER Keyword:\ulnone \
+\
+Add column:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` ALTER TABLE movies ADD COLUMN genre VARCHAR(100); `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Will add a genre column to the \'93movies\'94 table that accepts a string up to 100 characters\
+\
+Edit Column:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` ALTER TABLE movies CHANGE COLUMN year year_released YEAR; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will change the name of the \'93year\'94 column to \'93year_released\'94 which accepts a YEAR value as opposed to an integer value\
+\
+Remove Column:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` ALTER TABLE actors DROP age; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will remove the \'93age\'94 column from the \'93actors\'94 table\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Editing Table Data
+\b0 \
+\
+Insert Data:\
+\
+` 
+\b INSERT INTO actors VALUES (\'93Brad Pitt\'94, 52);
+\b0  `
+\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Above code will insert one row into the \'93actors\'94 table with a string (VARCHAR) name value of \'93Brad Pitt\'94 and an INTEGER age value of 52.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` INSERT INTO movies VALUES (1, \'938 Mile\'94, 2002); `\
+` INSERT INTO movies (title, year) VALUES (\'93Dude, Where\'92s My Car?\'94, 1999); `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** The first method adds data into the movies table by including info for each column. The second method specifies which columns receive data, so that the ID column is able to auto increment without instruction\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` INSERT INTO movies (year, title) VALUES (2011, \'93Toy Story 3\'94), (2018, \'93Toy Story 4\'94); `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Inserts two rows into tables at once\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` INSERT INTO movies SET title=\'93Back to the Future\'94;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Will insert column into \'93movies\'94 table with title set to \'93Back to the Future\'94 but year set to NULL. \'93SET\'94 keyword is also use to update data\
+\
+Update Data:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` UPDATE movies SET year = 1985 WHERE id = 5; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will update the year to 1985 for the movie \'93Back to the Future\'94 Which has an auto incremented id of \'935\'94\
+\
+Delete Data:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \
+` DELETE FROM movies WHERE id = 4 `
+\b0 \
+** This will delete \'93Toy Story 4\'94 (which has an auto incremented id of \'934\'94) from the movies table\
+\
+
+\b ` DELETE FROM movies WHERE year < 2000 `
+\b0 \
+** This will delete all movies which have a year of less than \'932000\'94 (\'93Back to the Future\'94 and \'93Dude, Where\'92s My Car?\'94)\
+\
+\
+
+\b Reading Data\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul SELECT keyword:\ulnone \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` SELECT * FROM movies; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Above code will pull all data from the \'93movies\'94 table\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` SELECT movies.title, movies.year FROM movies; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Also pulls all data from \'93movies\'94 table, but by calling each column individually. Columns appear in the order they are selected which allows organizational flexibility \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul WHERE keyword:
+\b \ulnone \
+\
+` SELECT * FROM movies WHERE year = 1999; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Selects all info from the movies table where the year is equal to \'931999\'94\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` SELECT * FROM movies WHERE year != 1999; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Selects all info from the movies table where the year is NOT equal to \'931999\'94
+\b \
+\
+` SELECT * FROM movies WHERE year > 2010 AND title != \'93Argo\'94; `\
+
+\b0 ** Selects all info from the movies table where the year is later than \'932010\'94 and that title is not \'93Argo\'94\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` SELECT * FROM movies WHERE year = 1990 OR year = 2000; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Selects all info from the movies table where the year is equal to \'931990\'94 OR \'932000\'94\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` SELECT * FROM movies WHERE year BETWEEN 1995 AND 2000; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Selects all info from the movies table where the year is between \'931995\'94 and \'93200\'94 (including movies made in 1995 and 2000)
+\b \
+\
+` SELECT * FROM movies WHERE title LIKE \'93%go%; `\
+
+\b0 ** Selects all info from the movies table where the title includes the letters \'93go\'94 at any point\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul ORDER BY keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT * FROM movies WHERE year = 1999 ORDER BY title; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Selects all info from the movies table in alphabetical order by title where the year is equal to \'931999\'94 \ul \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT * FROM movies WHERE year = 1999 ORDER BY title DESC; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Same as above code but movies will be ordered alphabetically in descending alphabetical order\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` SELECT * FROM movies WHERE year > 2000 ORDER BY year ASC. title DESC; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Will select all movies where the year is greater than 2000, ordered first by year in ascending order, then within each year, ordered by title in descending alphabetical order\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul GROUP BY keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT title, year FROM movies GROUP BY title `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** If the table for any reason includes repeats of titles, or multiple movies by the same title, this will return each title only once, displaying the first result with that title name. For example, if there are two movies named \'93Alien\'94 and one is listed first with a year of 1995 and another is listed with a year of 2000, only the initial title with a year of 1995 will appear within the results\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` SELECT year, COUNT(year) FROM movies GROUP BY year `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will return a list of all years besides a count of how many movies were made in that year\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` SET sql_mode = '' ` \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** May be necessary to change SQL mode if having trouble with \'93GROUP BY\'94 statements\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul LIMIT/OFFSET keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT * FROM movies ORDER BY year LIMIT 20; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Will pull the first 20 items from the \'93movies\'94 table ordered by year (will pull the oldest 20 movies in table)\'92\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` SELECT * FROM movies ORDER BY year LIMIT 20 OFFSET 20; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Will skip over the first 20 items from the \'93movies\'94 table and pull the 20 following items in the \'93movies\'94 table, ordered by year (used for pagination)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul IFNULL keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT movies.title, IFNULL(AVG(score) AS average_score, 0) AS Average FROM movies LEFT OUTER JOIN reviews ON movies.id = reviews.movie_id GROUP BY movies.title `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will replace any columns that have an \'93average_score\'94 of NULL (no reviewed scores) with a value of 0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Finding NULL values (IS):\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT * FROM movies WHERE year IS NULL; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Will pull all results from the \'93movies\'94 table where the year is not set, or is equal to \'93NULL\'94 (must use \'93IS\'94 keyword as opposed to \'93=\'93)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` SELECT * FROM movies WHERE year IS NOT NULL ORDER BY year; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Will remove all results where year is not set from results, and then order remaining results by year\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 String Functions\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "http://dev.mysql.com/doc/refman/5.6/en/string-functions.html"}}{\fldrslt 
+\b0 \cf0 http://dev.mysql.com/doc/refman/5.6/en/string-functions.html}}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul LOWER keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT LOWER(title) FROM movies `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will return a list of all movie titles converted to completely lowercase\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul UPPER keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT UPPER(title) FROM movies `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will return a list of all movie titles converted to completely uppercase\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul LENGTH keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT title, LENGTH(title) AS length FROM movies HAVING  length >= 8 `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will return a list of all movie titles (as well as the length of the title) that have a string length of more than or equal to 8 characters\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul DISTINCT keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT DISTINCT title FROM movies `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will return all movies other than those with a duplicate name. The first movie of each unique title will be returnd.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul CONCAT keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT CONCAT(UPPER(first_name), " ", UPPER(last_name)) AS full_name FROM users `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will return a list of the \'93first_name\'94 and \'93last name\'94 (in complete uppercase) of each user combined into one column\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul SUBSTRING keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT SUBSTRING(title, 1, 5) AS short_title FROM movies `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will return a list of movie titles with only the first 5 characters of each title (the \'931\'94 represents the starting point within the string, and the \'935\'94 represents the desired length of the substring)\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Numeric Functions\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "http://dev.mysql.com/doc/refman/5.6/en/numeric-functions.html"}}{\fldrslt 
+\b0 \cf0 http://dev.mysql.com/doc/refman/5.6/en/numeric-functions.html}}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul COUNT keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT COUNT(id) AS \'93Movies Post 2000\'94 FROM movies WHERE year > 2000 `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will return the number of movies in the \'93movies\'94 table that have a year later than 2000, with a column title of \'93Movies Post 2000\'94. Note no space between COUNT and (id)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul MIN/MAX keywords:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT MIN(year_released), MAX(year_released) FROM movies `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will return two columns, displaying both the years of both the oldest and the newest released movies within the table \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul SUM keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT SUM(year_released) FROM movies `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will return one column with one number representing the sum off release years for each movie in the table (this function has no logical use)\ul \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT SUM(score) / COUNT(id) AS "Average Score" FROM reviews WHERE movie_id = 5 `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will return the average review score for whichever movies has a \'93movie_id\'94 of 5\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul AVG keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone ` SELECT AVG(score) AS "Average Score" FROM reviews WHERE movie_id = 5 `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This is a more efficient way of returning a numeric average without using both SUM and COUNT\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul HAVING keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone SELECT movies.title, MAX(reviews.score) AS max_score FROM movies JOIN reviews ON movies.id = reviews.movie_id GROUP BY movies.title HAVING max_score = 5\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will return a list of all movies which have a maximum reviewed score equal to 5. The \'93HAVING\'94 keyword is used in place of \'93WHERE\'94 because it refers to a numeric function specific to this statement as opposed to set data within the table. \'93WHERE\'94 could potentially be used within the same statement to filter results before \'93HAVING\'94 clause\
+\
+WHERE vs HAVING:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "http://www.programmerinterview.com/index.php/database-sql/having-vs-where-clause/"}}{\fldrslt \cf0 http://www.programmerinterview.com/index.php/database-sql/having-vs-where-clause/}}\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Date & Time Functions\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "http://dev.mysql.com/doc/refman/5.6/en/date-and-time-functions.html"}}{\fldrslt 
+\b0 \cf0 http://dev.mysql.com/doc/refman/5.6/en/date-and-time-functions.html}}
+\b0 \
+update: {\field{\*\fldinst{HYPERLINK "https://sqlbolt.com/lesson/select_queries_with_nulls"}}{\fldrslt https://sqlbolt.com/lesson/select_queries_with_nulls}}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul \
+*** Putting It All Together ***\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ulnone SQL Practice: {\field{\*\fldinst{HYPERLINK "https://sqlbolt.com/lesson/select_queries_review"}}{\fldrslt https://sqlbolt.com/lesson/select_queries_review}}
+\b \ul \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ` SELECT m.title AS "Movie Title", \
+AVG(score AS "Average Score\'94,\
+MIN(score) AS \'93Minimum Score\'94,\
+MAX(score) AS \'93Maximum Score\'94, \
+FROM reviews r \
+RIGHT OUTER JOIN movies m \
+ON r.movie_id = m.id \
+GROUP BY m.title `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This is a very useful function that will return four columns that read \'93Movie Title\'94 and \'93Average Score\'94, \'93Minimum Score\'94 and \'93Maximum Score\'94 with a row for each movie listed next to its respective data. If no reviews exist for the movie, a column will still show up accompanied by NULL values since a \'93RIGHT OUTER JOIN\'94 was used. When called in the FROM and JOIN statements, \'93reviews\'94 and \'93movies\'94 are followed by their first letter in order to create a shorthand for referencing these tables at all other points within the SQL statement. However, once the shorthand is created, these tables MUST be referred to by their shortened name (calling \'93movies.id\'94 would not work)\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Normalization and Keys
+\b0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Normalization
+\b \ulnone : 
+\b0 Described the process of setting up a table that contains repeated/redundant data from one column of a table and puts that information into a new table\ul \
+\
+Primary Keys\ulnone : A unique number to define each row in a table. Primary keys cannot be NULL and cannot be duplicated\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` ALTER TABLE actors ADD COLUMN id INTEGER PRIMARY KEY AUTO_INCREMENT KEY FIRST; `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will add an primary key \'93id\'94 column to the actors table which is auto incremented. Values will automatically appear in column as soon as command is run\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \
+Unique Keys\ulnone : Cannot be duplicated but can be NULL. Values such as emails and SSNs can be unique keys\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \
+` CREATE TABLE genres (id INTEGER PRIMARY KEY AUTO_INCREMENT, genre_name VARCHAR(100) UNIQUE KEY) `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will create a new \'93genres\'94 table with an \'93id\'94 column that is auto incremented and serves as the primary key, as well as a \'93genre_name\'94 column which serves as a unique key and will not allow duplicate values\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Foreign Keys\ulnone : Also known as reference keys, they describe a relationship between data in two tables. For example: a genre id column in the movies table. Can be NULL and can be duplicated\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` ALTER TABLE movies ADD COLUMN genre_id INTEGER, ADD CONSTRAINT FOREIGN KEY (genre_id) REFERENCES genres(id); `
+\b0 \
+**This code will add a \'93genre_id\'94 column to the \'93movies\'94 table that is limited to only include values also included in the \'93id\'94 column of the \'93genres\'94 table in the same database\
+\
+\
+
+\b Joining Tables\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul JOIN Keyword:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone Inner Join:
+\b \
+\
+` SELECT movies.title AS movie_title, genres.genre_name FROM movies JOIN genres ON movies.genre_id = genres.id `\
+
+\b0 ** This will combine the \'93movies\'94 table with the \'93genres\'94 table, matching the genre_id to its respective name in each column. Will only pull columns from movies table that have genre_id assigned. \'93movies.title\'94 column will be renamed \'93movie_title\'94 as per AS keyword\
+\
+Outer Joins:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` SELECT * FROM movies LEFT OUTER JOIN genres ON movies.genre_id = genres.id `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Like above code, this will match each movie to its respective genre, but will also include columns of \'93movie\'94 table that do not have a genre_id assigned\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` SELECT * FROM movies RIGHT OUTER JOIN genres ON movies.genre_id = genres.id `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Like above codes, this will also match each movie to its respective genre, but will also include columns of \'93genres\'94 table that have not been assigned to a specific movie\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` FULL OUTER JOIN ` 
+\b0 may be used to show all values from both tables being joined\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** Outer joins may also be referred to as \'93complex\'94 joins
+\b \
+\
+Creating Indexes\
+\
+` CREATE INDEX name_index ON actors(name) `
+\b0 \
+** Using an index will speed up runtime when using \'93WHERE\'94 clause by only searching through rows that meet \'93WHERE\'94 statement\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ` EXPLAIN SELECT name AS short_name FROM actors WHERE name = "Ada Tai" `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** \'93EXPLAIN\'94 keyword will give information on statement being run, such as how many rows SQL must cycle through in order to execute statement. Number of rows is included within this information\
+\
+\
+}

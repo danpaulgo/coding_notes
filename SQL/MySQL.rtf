@@ -1,0 +1,77 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 MySQL\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0\fs24 \cf0 \ul \ulc0 MySQL Workbench
+\b \ulnone \
+\
+Creating Users \
+\
+
+\b0 \ul User 1 - Read Access Only\
+\
+\ulnone GRANT SELECT\
+ON treehouse_movie_db.*\
+TO user_1@\'93%\'94\
+IDENTIFIED BY \'93password\'94\
+\
+FLUSH PRIVILEGES \
+\
+** When finished, add user to MySQL Connections with matching data\
+\
+- Database name is followed with \'93 .* \'94\
+- \'93%\'94 symbol following username represents wildcard defining where user can connect from remotely. Use of wildcard allows user to connect from anywhere \
+- \'93password\'94 should be replaced by user password\
+- \'93GRANT\'94 will be replaced by \'93CREATE USER\'94 in future versions\
+\
+\
+\ul User 2 - Read/Write Access\
+\
+\ulnone GRANT SELECT, INSERT, UPDATE, DELETE\
+ON treehouse_movie_db.*\
+TO user_2@\'93%\'94\
+IDENTIFIED BY \'93password\'94\
+\
+FLUSH PRIVILEGES \ul \
+
+\b \ulnone \
+\
+
+\b0 \ul User 3 - DDL\
+\
+\ulnone GRANT SELECT, ALTER, CREATE, DROP\
+ON treehouse_movie_db.*\
+TO user_3@\'93%\'94\
+IDENTIFIED BY \'93password\'94\
+\
+FLUSH PRIVILEGES 
+\b \
+\
+\
+Back Up & Restore Databases\
+\
+
+\b0 \ul Backup Database
+\b \ulnone \
+
+\b0 \
+- Open up \'93Data Export\'94 in \'93Management\'94 sidebar\
+- Check off database to export, as well as specific tables if necessary\
+- Export to self-contained file (most cases)\
+- Specify file name\
+- \'93Start Export\'94\
+** Mat need to change \'93Path to mysqldump Tool\'94 in \'93Preferences > Administration\'94\
+\
+\ul Restore Database\
+\
+\ulnone - Database may be renamed at top of exported SQL file (\'93CREATE DATABASE\'94 & \'93USE\'94 lines)\
+- User can also choose Schema for file to be imported into (if \'93CREATE DATABASE\'94 is not included within file)\
+
+\b \
+}

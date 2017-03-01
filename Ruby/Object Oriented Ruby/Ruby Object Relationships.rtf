@@ -1,0 +1,102 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid101\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 Ruby Object Relationships\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 In object-oriented programming, objects often hold relationships to one another, requiring interaction between them\
+\
+Examples:\
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
+\ls1\ilvl0\cf0 {\listtext	\'95	}Facebook users are connected to each other through friendships\
+{\listtext	\'95	}Tweets are connected to the user who published the tweet\
+{\listtext	\'95	}Spotify song objects, album objects, and artist objects are all connected to one another\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 \'93Belongs To\'94 Relationship\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** Defines a relationship where one object belongs to another object, such as an album object \'93belonging to\'94 an artist object\ul \
+\
+\ulnone Song to artist example:\
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
+\ls2\ilvl0
+\i \cf0 {\listtext	\uc0\u8259 	}\'93Artist\'94 class has \'93name\'94, \'93age\'94, and \'93album\'94 properties with \'93album\'94 being an array of album objects\
+{\listtext	\uc0\u8259 	}\'93Album\'94 class has \'93year\'94, \'93songs\'94, and \'93artist\'94 properties, with \'93songs\'94 being an array of song objects and \'93artist\'94 being an artist object\
+{\listtext	\uc0\u8259 	}\'93Songs\'94 class has \'93name\'94, \'93genre\'94, and \'93artist\'94 properties, with \'93artist\'94 holding an artist object
+\i0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 drake = Artist.new(\'93Drake\'94, 30)\
+hotline = Song.new(\'93Hotline Bling\'94 \'93Hip-Hop\'94)\
+hotline.artist = drake 
+\b0 (This will set the \'93artist\'94 property of the song object \'93hotline\'94 to equal the artist object \'93drake\'94)\
+
+\b hotline.artist.age 
+\b0 (will return the integer value of 30)\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \'93Has Many\'94 Relationship\ulnone \
+\
+** Inverse of \'93Belongs To\'94 relationship. Defines a relationship where one object \'93has many\'94 object associated with it, such as one artist object that \'93has many\'94 album objects within it\
+\
+Within \'93Artist\'94 class:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 def add_album(album)\
+  @albums << album\
+  album.artist = self\
+end
+\b0 \
+\
+Outside class:\
+\
+
+\b nwts = Album.new(\'93Nothing Was the Same\'94, 2013)\
+take_care = Album.new(\'93Take Care\'94, 2011)\
+drake.add_album(nwts)\
+drake.add_abum(take_care)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** The \'93nwts" and \'93take_care\'94 album objects will be stored in the \'93drake\'94 artist object\'92s \'93albums\'94 array. The \'93drake\'94 artist object will subsequently be saved as the value for each album object\'92s \'93artist\'94 property (` album.artist = self `)\
+\
+Combined into one method:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 def add_album_by_name(name, year)\
+  album = album.new(name, year)\
+  @albums << album\
+  album.artist = self\
+end\
+\
+drake.add_album_by_name(\'93Take Care\'94, 2011)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Avoids the need to create an album object separately before adding it to \'93albums\'94 array within \'93drake\'94 object\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Collaborating Relationships\
+\
+\
+\'93Has Many Through\'94 Relationships\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone A given object has many of another type of object. That second object belongs to (or has many) of a third type of object. Therefore, the first object has many of the third object through the second type of object.\
+}

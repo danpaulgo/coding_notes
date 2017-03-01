@@ -1,0 +1,276 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh6700\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 \ul \ulc0 Ruby Basics\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "https://ruby-doc.org/core-2.3.1/"}}{\fldrslt 
+\b0\fs24 \cf0 \ulnone https://ruby-doc.org/core-2.3.1/}}
+\b0\fs24 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone Ruby Style
+\b0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "https://github.com/bbatsov/ruby-style-guide"}}{\fldrslt \cf0 https://github.com/bbatsov/ruby-style-guide}} (Ruby style guide - Best practices)\
+\
+Soft tabs: 2 spaces, convert tabs to spaces\
+\
+class names: CamelCase\
+\
+ThisIsCamelCase
+\b \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone IRB
+\b0 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ulnone To begin writing Ruby code:\
+- Open up Terminal\
+- Run \'93irb\'94 command (interactive ruby)\
+- run \'93exit\'94 command to exit irb\
+- \'93ctrl+L\'94 to clear screen in rib\
+\
+** Ruby doesn\'92t require use of parentheses and semicolons\
+** LINE BREAKS IN RUBY CODE MAKE A DIFFERENCE (Unlike in JavaScript and PHP)\
+\
+** Comments in Ruby created using pound key \'93#\'94\
+\
+** To put variable (or any ruby code) inside of string, use the following syntax: \
+` puts \'93This is a variable: #\{variableName\}\'94 ` (MUST USE DOUBLE QUOTES)\
+\
+Numeric order of characters and letters: {\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/ASCII#ASCII_printable_code_chart"}}{\fldrslt https://en.wikipedia.org/wiki/ASCII#ASCII_printable_code_chart}}\
+ex: ` \'93a\'94 > \'93Z\'94 ` would evaluate to true because \'93a\'94.ord == 97 and \'93Z\'94.ord == 90\
+ex: ` \'93A\'94 > \'93a\'94 ` would evaluate to false because \'93A\'94.ord == 65 and \'93a\'94.ord == 97\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Pry\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Pry is similar to IRB but may be included in a ruby file as opposed to only opening directly in the console using \'93binding.pry\'94\
+\
+ex:\
+` require "pry"\
+def plus_two(num)\
+	num + 2\
+	num\
+	binding.pry\
+	var = \'93variable after\'94\
+end `\
+\
+When run in terminal, the program will freeze at \'93binding.pry\'94 and open up a ruby REPL (like IRB) but all previous information is available (such as the \'93num\'94 variable). However any information stated after binding.pry (such as the \'93var\'94 variable) will not be accessible \
+\
+** To continue running ruby program after \'93binding.pry\'94 simply type exit in Pry\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Ruby Number Operators\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul +\ulnone  (addition) \
+** Also used for string concatenation\ul \
+\
+-\ulnone  (subtraction)\ul \
+\
+*\ulnone  (multiplication)\
+** Also used for string repetition\ul \
+\
+/\ulnone  (division)\ul \
+\
+%\ulnone  (modulus - returns remainder)\
+ex: ` 20 % 6 ` would return the integer \'932\'94\ul \
+\
+**\ulnone  (exponent)\
+ex: ` 5 ** 3 ` would return the integer \'93125\'94\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Booleans\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul Nil
+\b \ulnone \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 puts nil.class   # => NilClass\
+puts nil.to_i    # => 0\
+puts nil.to_a    # => []\
+puts nil.to_h    # => \{\}\
+puts nil.nil?    # => true\
+puts nil.inspect # => "nil"\
+puts !nil        # => true\
+puts true.nil?   # => false\
+puts 1.nil?      # => false\
+\
+** If a method is called with nothing to return, it will return a value of \'93nil\'94\
+** To test if a certain value is \'91true\'94 or \'93false\'94, use double bang \'93!!\'94 operator\
+ex: 
+\b ` !!nil ` 
+\b0 will return a value of \'93false\'94. 
+\b ` !!\'93 \'94 ` 
+\b0 will return a value of \'93true\'94
+\b \
+
+\b0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Precedence\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone true || false == true\
+true && false == false\
+true || nil == true\
+true && nil == nil\
+false || nil == nil\
+false && nil == false\
+20 || 10 == 20 (\'93or\'94 operator chooses value on left)\
+20 && 10  == 10 (\'93and\'94 operator chooses value on right)\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Ruby Variables\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul Setting variable\ulnone :\
+\
+` var_name = var_value `\
+ex: ` name = \'93Daniel\'94 `\
+\
+\ul Calling variable\ulnone :\
+\
+` var_name `\
+ex: ` puts name `\
+\
+\ul Conditional Assignment\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone \
+` name ||= \'93Daniel\'94 `\
+\
+SAME AS\
+\
+` name = (name || \'93Daniel) `\
+\
+** Each of this will assign the value \'93Daniel\'94 to the \'93name\'94 variable as long as the variable has not been assigned yet, or has a value of \'93nil\'94\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \
+Interpolation\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 In order to have Ruby interpolate code within strings, use the following syntax:\
+\
+- ` \'93The variable #\{name\} will be interpolated\'94 `\
+- ` %Q(The variable #\{name\} will be interpolated) `\
+\
+In order to prevent ruby interpolation within strings, use this syntax:\
+\
+- ` \'91The variable #\{name\} will not be interpolated\'92 `\
+- ` %q(The variable #\{name\} will not be interpolated) `\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Ruby Special Characters\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul \\n\ulnone : Creates new line within a string\
+ex: ` \'93This is the first line\\nThis is the second line\'94 `\
+\
+\ul \\s\ulnone : Creates a standard single space within string\
+ex: ` \'93This\\stext\\swill\\slook\\snormal\'94\
+\
+\ul \\t\ulnone : Adds a tab before following text\
+ex: ` \'93Text before the tab\\tText after the tab\'94\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Conditional Syntax\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \ul Traditional
+\b \ulnone \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i\b0 \cf0 name = \'93Daniel Goldberg\'94\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i0 \cf0 if name == \'93Daniel\'94\
+  print \'93Name is Daniel\'94\
+elsif name == \'93Daniel Goldberg\'94\
+  print \'93Name is Daniel Goldberg\'94\
+else\
+  print \'93I don\'92t know your name\'94\
+end\
+\
+(would print \'93Name is Daniel Goldberg\'94 to screen. Note the else if command is spelled \'93elsif\'94)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul Case Statement\ulnone \
+\
+userInput = gets\
+\
+case userInput\
+  when \'93hello\'94\
+    puts \'93Hello friend!\'94\
+  when \'93goodbye\'94\
+    puts \'93See ya later!\'94\
+  else\
+    puts \'93I don\'92t know how to respond to that\'94\
+end\
+\
+\ul Ternary Operator\ulnone \
+\
+Traditional syntax:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 if age < 3\
+	\'93baby\'94\
+else\
+	\'93not baby\'94\
+end
+\b0 \
+\
+Ternary Operator:\
+\
+
+\b age < 3 ? \'93baby\'94 : \'93not baby\'94\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \
+** Statement begins with condition 
+\b (age < 3)
+\b0 , followed by question mark, followed by return value if condition == true 
+\b (\'93baby\'94)
+\b0 , followed by a semicolon \'93:\'94, followed by the the return value if the condition is != true 
+\b (\'93not baby\'94)\
+}
