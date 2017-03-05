@@ -1,0 +1,146 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 ActiveRecord Methods
+\b0\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 CRUD Methods\ulnone \
+\
+All CRUD Methods: {\field{\*\fldinst{HYPERLINK "http://guides.rubyonrails.org/active_record_basics.html#crud-reading-and-writing-data"}}{\fldrslt http://guides.rubyonrails.org/active_record_basics.html#crud-reading-and-writing-data}}\
+
+\b \
+.all
+\b0 : Returns an array of all rows in the form of objects
+\b \
+\
+.attr_accessors
+\b0 : Every table column will be assigned an attribute accessor so it may be called as a setter or getter method
+\b \
+\
+.column_names
+\b0 : Takes no arguments. Returns array of all column names in table associated with class name
+\b \
+\
+.create
+\b0 : Takes hash as argument (or no argument). Inserts hash values into database using key as column name\
+\
+
+\b .destroy
+\b0 : 
+\i (Instance Method) 
+\i0 Deletes row from database that is represented by object\
+\
+
+\b .destroy_all
+\b0 : Class method that deletes every row from table
+\b \
+\
+.find
+\b0 : Takes integer as argument. Returns database row that matches ID in the form of an ActiveRecord (or child) instance.
+\b \
+\
+.find_by
+\b0 : Takes a has as argument. Returns ActiveRecord instances for all rows that matches argues key/value pairs.\
+\
+
+\b .first
+\b0 : Returns first entered row in the form of an object
+\b \
+\
+.last
+\b0 : Returns last entered row in the form of an object\
+\
+
+\b .new
+\b0 : Creates new ActiveRecord object, taking a hash as an argument or no argument at all
+\b \
+\
+.save
+\b0 : 
+\i (Instance Method)
+\i0  Takes no arguments. Saves ActiveRecord object into database, matching each property to its respective column\
+\
+
+\b .update
+\b0 : 
+\i (Instance Method) 
+\i0 Takes a hash of parameters defining which rows to update (keys) and what new values to enter
+\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** Rows can also be updated by pulling the row using a \'93.find\'94 method to save the row in an object. Then the object can be updated using attr_accessors and saved back into the database using \'93.save\'94\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 .update_all
+\b0 : Takes a hash as an argument and works similarly to \'93update\'94 but updates every row in table as opposed to a single object \
+\
+\ul \
+Querying Methods\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "http://guides.rubyonrails.org/active_record_querying.html#calculations"}}{\fldrslt \cf0 \ulc0 http://guides.rubyonrails.org/active_record_querying.html#calculations}}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone .count
+\b0 : Returns a count of rows in the table associated with the class called on\
+ex: 
+\b Movie.count\
+\
+.minimum()
+\b0 : Takes the name of a column (that has a numeric datatype) as an argument and returns the minimum value\
+ex: 
+\b Movie.sum(:production_cost)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This would return the movie with the lowest production cost\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 .order()
+\b0 : Takes one or more rows as an argument, as well as optional ascending or descending values for each (defaults to ascending). Returns array of objects in order specified, prioritizing first argument over last\
+ex: 
+\b Movie.order(:release_date) 
+\i\b0 (Will return array of all movie rows as objects listed oldest to newest)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i0 \cf0 ex: 
+\b Movie.order(release_date: :desc) 
+\i\b0 (Will return array of all movie rows as objects listed newest to oldest. NOTE: semicolon comes after column name when using 
+\b :asc 
+\b0 or
+\b  :desc
+\b0 )
+\i0\b \
+\
+.sum()
+\b0 : Takes the name of a column (that has a numeric datatype) as an argument and returns the sum of all the columns values\
+ex: 
+\b Movie.sum(:production_cost)\
+
+\b0 ** This would return the sum of production costs for all movies in table\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 .where()
+\b0 : Takes two arguments, the first being a SQL WHERE statement (without the word \'93WHERE\'94) that uses a question mark placeholder, and the second being a variable to fill the placeholder\
+ex: 
+\b House.where(\'93price > ?\'94, 100000 )\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** This will run through the \'93houses\'94 table and return an array of House objects where the price is greater than 100000 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "http://guides.rubyonrails.org/active_record_querying.html#conditions"}}{\fldrslt \cf0 http://guides.rubyonrails.org/active_record_querying.html#conditions}}
+\b \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \
+}

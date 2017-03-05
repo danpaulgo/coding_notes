@@ -10,7 +10,7 @@
 
 \b0\fs24 \cf0 Dynamic ORM allows you to use a created database in order to automatically create all basic ORM methods (insert, update, select, delete)\
 \
-** The following methods are usually included inside a parent class and can be used in any child class thanks to the dynamic structure. HOWEVER, That attr_accessor iterator needs to be specifically included in every child class, but still utilizes the \'93self.column_names\'94 method from the parent class\
+** The following methods are usually included inside a superclass and can be used in any child class thanks to the dynamic structure. HOWEVER, That attr_accessor iterator needs to be specifically included in every child class, but still utilizes the \'93self.column_names\'94 method from the superclass class\
 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 \cf0 \ul \ulc0 Building attr_accessor/initialize From Column Names\
@@ -52,9 +52,8 @@ end\
 \
 4. Create abstract initialize method ()\
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\b \cf0 def initialize(attributes)\
+\b def initialize(attributes)\
   attributes.each do | key, value |\
     self.send((\'93#\{key\}=\'94), value)\
   end\
@@ -86,8 +85,13 @@ end
 \b0 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\i \cf0 (Note the double set of quotes surrounding the send method. The original array will contain a list of strings within strings ([\'93 \'91 content 1 \'92 \'94, \'93 \'91 content 2\'92 \'94]) but when joined, it will simply be one string consisting of multiple strings which can easily be used within our SQL statement)
-\i0 \
+\i \cf0 (Note the double set of quotes surrounding the send method. The original array will contain a list of strings within strings ([\'93 \'91 content 1 \'92 \'94, \'93 \'91 content 2\'92 \'94]) but when joined, it will simply be one string consisting of multiple strings which can easily be used within our SQL statement)\
+\
+UPDATE: 
+\b This method will not work. 
+\b0 Question mark placeholders may only be used in place of values, not table or column names. To use variables to insert table names, use 
+\b #\{col_name\}
+\i0\b0 \
 \
 \
 Find_by_name:\

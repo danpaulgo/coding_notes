@@ -19,7 +19,8 @@
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0 \ulnone {{\NeXTGraphic Screen Shot 2017-02-08 at 4.36.20 AM.png \width4940 \height4820
-}¬}\
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 \cf0 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
@@ -49,9 +50,8 @@ Gems must be stated at top of gem file:\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
 \b \cf0 ` gem 'rails', '~> 5.0.0', '>= 5.0.0.1'\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\b0 \cf0 ** This adds the \'93rails\'94 gem, allowing any minor version change after 5.0.0 (
+\b0 ** This adds the \'93rails\'94 gem, allowing any minor version change after 5.0.0 (
 \b \'91~> 5.0.0\'92
 \b0 ), but requiring a version equal to or greater than 5.0.0.1 (
 \b \'91>= 5.0.0.1\'92
@@ -76,13 +76,11 @@ group :production do\
   gem \'93money\'94\
 end `\
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\b0 \cf0 OR\
+\b0 OR\
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\b \cf0 ` gem "pry", :group => "development"\
+\b ` gem "pry", :group => "development"\
 gem \'93spec\'94, :group => \'93test\'94\
 gem \'93money\'94, :group => \'93production\'94 `
 \b0 \
@@ -95,15 +93,16 @@ Using Money Gem:\
 ** Will create new money object representing $1000 USD\
 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
-\cf0 \ul \ulc0 money.currency\ulnone : Returns object with info on the currency type of the specific Money object\
+\cf0 \ul money.currency\ulnone : Returns object with info on the currency type of the specific Money object\
 ex: ` money.currency.name ` would return the string \'93United States Dollar\'94\
 \
 \ul money.exchange_to()\ulnone : Converts currency\
 ex: ` money.exchange_to(\'93EUR\'94)\
 \
 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\b Bundler\
+\b \cf0 Bundler\
 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
@@ -115,7 +114,7 @@ ex: ` money.exchange_to(\'93EUR\'94)\
 \ls1\ilvl0\cf0 {\listtext	\'95	}If ruby project does not have a gemfile already, you may create one using the command: 
 \b ` bundle init `
 \b0  \
-\ls1\ilvl0{\listtext	\'95	}Run command 
+{\listtext	\'95	}Run command 
 \b ` bundle gem gem_name ` 
 \b0 to create a new gem directory structure\
 \pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural
@@ -131,7 +130,15 @@ ex: ` money.exchange_to(\'93EUR\'94)\
 
 \i0 \cf0 \ul Files associated with bundler:\
 \
-\ulnone Gemfile: Required file. Contains a source and list of gems required by files\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone Gemfile: Required file. Contains a source and list of gems required by files\
+ex:\
+
+\b ` gem \'91rails\'92\
+gem \'91rspec\'92\
+gem \'91pry\'92 `
+\b0 \
+\
 ** If project has Gemfile, all dependencies 
 \b must 
 \b0 be included in Gemfile\

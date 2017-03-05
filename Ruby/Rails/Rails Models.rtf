@@ -12,7 +12,8 @@
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 \cf0 \ul \ulc0 Setting Up Model\
 \
-\ulnone ** Models are created using same form as scaffolding\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone ** Models are created using same form as scaffolding\
 \
 1/2. Run \'93generate model\'94 command in terminal\
 ex: 
@@ -61,10 +62,12 @@ end `\
 \
 \
 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\b0 \ul Model name conversions:\
+\b0 \cf0 \ul Model name conversions:\
 \
-\ulnone Model name = Singular, capitalized \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone Model name = Singular, capitalized \
 ex: 
 \b Article\
 \
@@ -196,29 +199,34 @@ ex:
 \cf0 \ul .last\ulnone : Returns last object added to the resource being called\
 ex: 
 \b ` Post.last `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\b0 **Returns SQL statement: \'93 SELECT  \'91posts\'92.* FROM "posts" ORDER BY \'91posts\'92.\'92id\'92 DESC LIMIT ?\
+\b0 \cf0 **Returns SQL statement: \'93 SELECT  \'91posts\'92.* FROM "posts" ORDER BY \'91posts\'92.\'92id\'92 DESC LIMIT ?\
 [["LIMIT", 1]] \'94 \
 ** Returns single object:\
 	#<Post id: 2, name: "jay", age: 55, post: "this is a post", created_at: "2016-11-05 04:52:41", 	updated_at: "2016-11-05 04:52:41">\
 \
-\ul .first\ulnone : Returns first object added to the resource being called\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul .first\ulnone : Returns first object added to the resource being called\
 \
 \ul .find()\ulnone : Returns single object based on id\
 ex: 
 \b ` Post.find(1) `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\b0 **Returns SQL Statement: \'93 SELECT  \'91posts\'92.* FROM \'91posts\'92 WHERE \'91posts\'92.\'92id\'92 = ? LIMIT ?  [[\'91id\'92, 1], [\'91LIMIT\'92, 1]] \'94\
+\b0 \cf0 **Returns SQL Statement: \'93 SELECT  \'91posts\'92.* FROM \'91posts\'92 WHERE \'91posts\'92.\'92id\'92 = ? LIMIT ?  [[\'91id\'92, 1], [\'91LIMIT\'92, 1]] \'94\
 **Return single object where id is equal to argument:\
 	 #<Post id: 1, name: "dan", age: 8, post: "Hello!", created_at: "2016-11-05 04:52:29", 	updated_at: "2016-11-05 04:52:29"> \
 \
 \
 Create Operations:\
 \
-\ul .new\ulnone : Creates new object which can best stored as variable but does not save object to resource\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul .new\ulnone : Creates new object which can best stored as variable but does not save object to resource\
 ex:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\b ` new_post = Post.new `\
+\b \cf0 ` new_post = Post.new `\
 ` new_post.name = \'93Joe\'94 `\
 ` new_post.age = 25 `\
 ` new_post.post = \'93Hi, my name is Joe\'94 `\
@@ -229,12 +237,14 @@ ex:\
 
 \b ` Post.new(name: \'93Joe\'94, age: 25, post: \'93Hi, my name is Joe\'94).save `\
 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\b0 \ul .save\ulnone : Saves new object to resource after being created\
+\b0 \cf0 \ul .save\ulnone : Saves new object to resource after being created\
 ex: 
 \b ` new_post.save `\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\b0 **Returns SQL statement inserting data: \
+\b0 \cf0 **Returns SQL statement inserting data: \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0  INSERT INTO "posts" ("name", "age", "post", "created_at", "updated_at") \
  VALUES (?, ?, ?, ?, ?)  [["name", "Joe"], ["age", 25], ["post", "Hi, my name is Joe"], ["created_at", 2016-11-05 05:17:33 UTC], ["updated_at", 2016-11-05 05:17:33 UTC]]\
@@ -313,7 +323,11 @@ end ` \
 
 \b0 \cf0 ** This will validate that each \'93Article\'94 object has a \'93title\'94 and \'93post\'94 that are \'93present\'94 (not empty).\
 \
-Validation keywords:\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\b \cf0 Validation keywords
+\b0 \
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0 \ul length:\ulnone  Sets minimum/maxiumum length parameters for object attribute before it may be added to database\
@@ -325,7 +339,9 @@ ex:
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0 \ul presence:\ulnone  Sets whether or not (true/false) a particular attribute of an object should to be set before object may be added to database \
-\
+ex: 
+\b ` validates :description, presence: true `
+\b0 \
 \
 If validation fails, system will return a \'93rollback transaction\'94 message. Information on errors can be found using \'93\ul .errors\ulnone \'94 methods on objects:\
 \
@@ -336,8 +352,10 @@ ex:
 
 \b0 \ul .errors.full_messages\ulnone : Returns array with string messages regarding all encountered errors\
 ex: 
-\b ` post_object.errors.full_messages? `
-\b0 \
+\b ` post_object.errors.full_messages? `\
+\
+
+\b0 \ul validates_numericality_of\ulnone : {\field{\*\fldinst{HYPERLINK "http://apidock.com/rails/ActiveModel/Validations/ClassMethods/validates_numericality_of"}}{\fldrslt http://apidock.com/rails/ActiveModel/Validations/ClassMethods/validates_numericality_of}}\
 \
 \
 ** Error methods may only be used 

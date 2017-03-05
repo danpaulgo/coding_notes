@@ -1,0 +1,169 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 Rake\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0\fs24 \cf0 Rake is a tool used to create command line methods for executing repeated tasks in Ruby.\ul \
+\
+Building Rake Tasks\
+\
+\ulnone 1. Create a Rakefile in the top level of a project\'92s directory\
+\
+2. Define task using following syntax:\
+
+\b desc \'93describe what task does\'94\
+task :task_name do\
+  
+\i (task code)\
+end\
+\
+
+\i0\b0 ex:\
+
+\b desc \'93outputs hello from terminal\'94\
+task :hello do\
+  puts \'93Hello from Rake!\'94\
+end\
+\
+` rake hello ` 
+\b0 (command line method)\
+\
+** Rake tasks may be grouped using namespacing\
+ex:\
+
+\b namespace :greeting do\
+  desc \'93outputs hola\'94\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0   task :hola do\
+    puts \'93Hola\
+  end\
+\
+  desc \'93outputs hello\'94\
+  task :hello do\
+    puts \'93Hello\'94\
+  end\
+end\
+\
+` rake greeting:hello ` 
+\i\b0 OR  
+\i0\b ` rake greeting:hola `\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 ** You may view a list of all available rake tasks by entering the command: 
+\b rake -T
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 \
+\
+Common Rake Tasks\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone Environment: Requires environment file. May be used in other rake tasks\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 desc \'91requires environment\'92\
+task :environment do\
+  require_relative \'91./config/environment\
+end\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 Migrate: Creates table from Student class. Requires environment file using environment task\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 namespace :db do\
+  task :migrate => :environment do\
+    Student.create_tabke\
+  end\
+end\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 \
+Seed: Inserts mock data into database. Should be run only after database is created (using 
+\b db:migrate
+\b0 )\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 namespace :db do\
+  task :seed do\
+    require_relative \'91./db/seeds.rb\'92\
+  end\
+end
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i \cf0 (seeds.rb must require table_class.rb and include create statements to enter mock data)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i0 \cf0 Console: Opens up a console for testing code that includes mock data and environment. Must Run 
+\b db:migrate 
+\b0 and 
+\b db:seed 
+\b0 first in order for all data to be loaded in console.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 desc \'91launch console with environment\'92\
+task :console => :environment do\
+  Pry.start 
+\i\b0 (may also use 
+\b IRB.start
+\b0 )
+\i0\b \
+end\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 HELPER FILE: /Users/danpaulgo/.atom/.learn-ide/home/danpaulgo/code/labs/completed/intro-to-rake-v-000\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 Sinatra/ActiveRecord/Rake\ulnone \
+\
+Rakefiles may require outside libraries such as sinatra/activerecord/rake:\
+
+\b ` require 'sinatra/activerecord/rake'
+\b0 \
+\
+Commands\
+\
+Create Migration file: Creates template \'93.rb\'94 file in \'93db > migrate\'94. Resulted file holds a child class of ActiveRecord::Migration with an empty \'93change\'94 method \
+ex:
+\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 Command: 
+\b ` rake db:create_migration NAME=create_movies `\
+
+\b0 Resulting file contents:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 class CreateMovies < ActiveRecord::Migration\
+  def change\
+  end\
+end\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 Migrate changes to database: Will run all ruby migration files (ActiveRecord::Migration) in \'93db > migrate\'94 that have not yet been run, updating database 
+\b \
+
+\b0 Command:
+\b ` rake db:migrate `
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0  \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 Migrate test database:\
+Command: 
+\b ` rake db:migrate SINATRA_ENV=test
+\i\b0 \
+}

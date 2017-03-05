@@ -1,0 +1,108 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc
+
+\f0\b\fs26 \cf0 ActiveRecord Basics\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i\fs24 \cf0 *** Final walkthrough at bottom of page
+\i0\b0 \
+\
+ActiveRecord is a ruby gem that serves as a dynamic ORM superclass used to map database tables to Ruby objects\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+{\field{\*\fldinst{HYPERLINK "http://guides.rubyonrails.org/active_record_querying.html"}}{\fldrslt \cf0 http://guides.rubyonrails.org/active_record_querying.html}}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ul \ulc0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone Connecting to database with ActiveRecord 
+\i (inside environment.rb)
+\i0 :\ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 \ulnone connection = ActiveRecord::Base.establish_connection(:adapter => \'93sqlite3\'94, :database => \'93db/database_name.sqlite\'94)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 Executing SQL directly to database:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 ActiveRecord::Base.connection.execute(sql)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 Creating child class with ActiveRecord methods:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 class Klass < ActiveRecord::Base\
+  
+\i (additional code)
+\i0 \
+end\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 Getting Started:\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 {{\NeXTGraphic Screen Shot 2017-03-04 at 10.50.32 PM.png \width9260 \height6360
+}¬}
+\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i\b0 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\i0 \cf0 \ul \ulc0 Run-through Setting Up & Using Database Tables (Models)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \ulnone 1. Open up project directory (such as a rails project)\ul \
+\
+\ulnone 2. Create a database connection inside of \'93config/environment\'94 using ActiveRecord::Base \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 connection = ActiveRecord::Base.establish_connection(:adapter => \'93sqlite3\'94, :database => \'93db/database_name.sqlite\'94)
+\b0 \
+\
+3. Create ruby migration file in \'93db/migrate\'94 with a class to create table. Class must be a child class of \'93ActiveRecord::Migration\'94 and the name of the class must correspond to the name of the file:\
+
+\b 20140923193245_create_houses.rb 
+\b0 = 
+\b CreateHouses < ActiveRecord::Migration
+\b0 \
+** The 14 digit number at the beginning of the file name is actually a timestamp in the form: 
+\b YYYYMMDDHHMMSS\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 4. Create ruby model file in \'93app/models\'94 or \'93lib/models\'94 holding a child class of \'93ActiveRecord::Base\'94 which corresponds to the name of the table created in the migration file: \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Houses < ActiveRecord::Base\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b0 \cf0 This will inherit all ActiveRecord Methods and create attribute_accessors for all table columns. See \'93ActiveRecord Methods\'94 section above for list of inherited methods. You may add additional methods inside class but it is not necessary.
+\b \
+
+\b0 ** Models literally 
+\i model 
+\i0 the database using 
+\i model 
+\i0 objects \
+\
+5. Open up project directory in terminal and run command 
+\b rake db:migrate 
+\b0 to run migration file and update database with new table\
+\
+6. Utilize ActiveRecord::Base methods to perform CRUD actions on database\
+\
+7. You may execute SQL code directly to the database using: 
+\b ActiveRecord::Base.connection.execute(sql)
+\b0 \
+}
